@@ -1,0 +1,58 @@
+node_modules/
+.next/
+dist/
+*.xcodeproj/
+DerivedData/
+.env
+.env.*
+!.env.example
+.DS_Store
+supabase/.temp/
+evals/golden/data/
+**/*.spool.jsonl
+_private/
+
+# never commit xcode build output (codex/dev had 1007 of these)
+apps/ios/build/
+ios/build/
+*.xcworkspace/xcuserdata/
+DerivedData/
+ios/Config/Runtime.local.xcconfig
+
+# supabase CLI runtime state (branch switcher checkpoint)
+supabase/.branches/
+
+# pnpm content-addressable store — never source
+.pnpm-store/
+*.tsbuildinfo
+
+# per-machine MCP dev config
+.mcp.json
+frame/.mcp.json
+
+# runtime state must never enter the repo (graph dbs, staged sends, transcripts, caches)
+frame/claims/claims*.db*
+frame/claims/*.json
+frame/claims/*.jsonl
+frame/claims/_founder_prefill_archive/
+frame/claims/_virgin_holdout/
+
+# docs/ is local-only by decision (8/4): agent context + safekeeping via machine backup, not git
+docs/
+
+# TLS material — Tailscale funnel cert/key. Regenerate with `tailscale cert`, never commit.
+*.key
+*.crt
+
+# Agent contracts + specs — same call as docs/: agent context and safekeeping,
+# never shipped in the repo. Covered by frame/backup.sh.
+.agents/
+/CLAUDE.md
+
+# local agent state
+.claude/
+.tokensave/
+
+__pycache__/
+*.pyc
+.DS_Store

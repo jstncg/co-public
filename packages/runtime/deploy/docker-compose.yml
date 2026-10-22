@@ -1,0 +1,49 @@
+name: co
+
+services:
+  co:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    stop_grace_period: 45s
+    env_file:
+      - path: ./production.env.example
+      - path: ./production.env
+        required: false
+    environment:
+      CO_ENV: production
+      CO_HOME: /data
+      CO_SERVER_TOKEN_FILE: /run/secrets/server_token
+      OPENAI_API_KEY_FILE: /run/secrets/openai_api_key
+      # RESEND_API_KEY_FILE: /run/secrets/resend_api_key
+      # CO_EMAIL_OTP_SECRET_FILE: /run/secrets/co_email_otp_secret
+    secrets:
+      - server_token
+      - openai_api_key
+      # Add resend_api_key and co_email_otp_secret here when email is enabled.
+    volumes:
+      - co_data:/data
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=512m,mode=1777
+    ports:
+      - "127.0.0.1:${CO_PORT:-8787}:8787"
+
+volumes:
+  co_data:
+
+secrets:
+  server_token:
+    file: ./secrets/server_token
+  openai_api_key:
+    file: ./secrets/openai_api_key
+  # resend_api_key:
+  #   file: ./secrets/resend_api_key
+  # co_email_otp_secret:
+  #   file: ./secrets/co_email_otp_secret

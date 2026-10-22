@@ -1,0 +1,23 @@
+{
+  "name": "@co/processing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@co/contracts": "workspace:*",
+    "@co/model-gateway": "workspace:*",
+    "@co/intelligence": "workspace:*",
+    "@co/source-adapters": "workspace:*",
+    "@supabase/supabase-js": "2.110.7"
+  },
+  "devDependencies": {
+    "@types/node": "26.1.1",
+    "typescript": "6.0.3",
+    "vitest": "4.1.10"
+  }
+}

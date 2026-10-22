@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>co — your mind</title>
+<!--
+  DESIGN NORTH-STAR for the real viewer (serve.py, :8811).
+  "A house for your thoughts" — mymind-calm, Shopify-clean, zero AI chrome.
+  Every {{ }} is a data-binding slot the server fills from the per-tenant stores.
+  Founder/debug internals (sim scores, tiers, ledgers) do NOT belong here — separate route.
+-->
+<style>
+  :root{
+    --paper:#FAF8F3; --paper-2:#F2EEE5; --card:#FFFFFF;
+    --butter:#F7EFCF; --butter-ink:#4A4225;
+    --ink:#201D18; --muted:#8C857A; --faint:#B4AC9F;
+    --line:#E8E3D8; --accent:#35544B; --accent-soft:#7E9A84;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;
+    --shadow:0 1px 2px rgba(32,29,24,.03),0 10px 26px -16px rgba(32,29,24,.14);
+    --shadow-lift:0 2px 4px rgba(32,29,24,.05),0 18px 34px -18px rgba(32,29,24,.20);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper)}
+  .app{min-height:100vh;color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+
+  .topbar{display:flex;align-items:center;gap:20px;padding:22px clamp(20px,5vw,56px);border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(250,248,243,.86);backdrop-filter:saturate(1.2) blur(10px);z-index:5}
+  .wordmark{font-family:var(--serif);font-size:23px;letter-spacing:.01em}
+  .wordmark .dot{color:var(--accent)}
+  .search{flex:1;max-width:420px;margin:0 auto;font-family:var(--serif);font-style:italic;font-size:16px;color:var(--faint);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 16px}
+  .avatar{width:32px;height:32px;border-radius:50%;flex:none;background:linear-gradient(150deg,#c9b7a2,#8a7a63);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+
+  .house{max-width:1180px;margin:0 auto;padding:clamp(28px,5vw,52px) clamp(20px,5vw,56px) 80px}
+  .lede{margin-bottom:34px}
+  .lede h1{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(30px,5vw,46px);line-height:1.05;margin:0 0 10px;letter-spacing:-.01em;text-wrap:balance}
+  .lede p{margin:0;color:var(--muted);font-size:14.5px}
+  .lede p .sep{color:var(--faint);margin:0 8px}
+
+  .layout{display:grid;grid-template-columns:1fr;gap:44px}
+  @media(min-width:1000px){.layout{grid-template-columns:minmax(0,1fr) 296px}}
+
+  .gallery{column-count:2;column-gap:22px}
+  @media(max-width:560px){.gallery{column-count:1}}
+  .card{break-inside:avoid;margin:0 0 22px;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;transition:transform .22s ease,box-shadow .22s ease}
+  .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lift)}
+  .card .body{padding:20px 21px}
+  .label{display:flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);font-weight:600;margin-top:14px}
+  .label .tick{width:5px;height:5px;border-radius:50%;background:var(--accent-soft);flex:none}
+
+  .note{background:var(--butter);border-color:#EDE2BE}
+  .note .line{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.34;color:var(--butter-ink)}
+  .note .label{color:#9c8f66}
+  .note .label .tick{background:#c8b56f}
+
+  .thing{display:flex;gap:15px}
+  .cover{width:58px;height:80px;border-radius:5px;flex:none;box-shadow:0 6px 16px -8px rgba(32,29,24,.5);display:flex;align-items:flex-end;padding:8px;font-family:var(--serif);font-size:10.5px;line-height:1.15;color:#fff}
+  .cover.book{background:linear-gradient(150deg,#5b6b60,#2f3d35)}
+  .cover.song{background:linear-gradient(150deg,#b98a86,#5f3f4a);align-items:center;justify-content:center;padding:0}
+  .cover.song svg{width:24px;height:24px;opacity:.92}
+  .thing h3{margin:0 0 5px;font-size:15px;font-weight:600;letter-spacing:-.01em}
+  .thing p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.45}
+
+  .photo{position:relative}
+  .photo .tile{aspect-ratio:4/5;width:100%;display:block;object-fit:cover}
+  .photo .cap{position:absolute;left:0;right:0;bottom:0;padding:16px 17px 14px;color:#fff;font-size:12.5px;letter-spacing:.02em;background:linear-gradient(to top,rgba(20,17,13,.62),rgba(20,17,13,0))}
+  .photo .cap b{font-weight:600}
+
+  .link .kicker{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:7px}
+  .link h3{margin:0 0 9px;font-size:15.5px;font-weight:600;letter-spacing:-.01em}
+  .link p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.5}
+
+  /* recommendation — seamless: same card as a sent-thing, the only tell is a quiet spruce "why" */
+  .why{display:flex;align-items:flex-start;gap:6px;font-size:12.5px;color:var(--accent);line-height:1.4;margin-top:13px;font-weight:500}
+  .why .spark{width:13px;height:13px;flex:none;margin-top:1px}
+  .dismiss{margin-top:9px;font-size:11px;color:var(--faint);letter-spacing:.05em;opacity:0;transition:opacity .2s}
+  .card.rec:hover .dismiss{opacity:.9}
+  @media(hover:none){.dismiss{opacity:.55}}
+
+  .thread .body{display:flex;flex-direction:column;gap:11px}
+  .thread h3{margin:0;font-family:var(--serif);font-size:19px;font-weight:400;letter-spacing:-.01em}
+  .thread p{margin:0;color:var(--muted);font-size:13.5px}
+  .chip{align-self:flex-start;font-size:11px;letter-spacing:.05em;color:var(--accent);background:#EAF0EC;border:1px solid #D6E3DA;padding:3px 10px;border-radius:20px;font-weight:600}
+
+  .moment .body{display:flex;flex-direction:column;gap:9px}
+  .bubble{font-size:13.5px;line-height:1.45;padding:9px 13px;border-radius:13px;max-width:88%}
+  .bubble.you{align-self:flex-end;background:var(--paper-2);color:var(--ink);border-bottom-right-radius:5px}
+  .bubble.co{align-self:flex-start;background:var(--accent);color:#F4F1E9;border-bottom-left-radius:5px}
+
+  .rail{display:flex;flex-direction:column;gap:32px}
+  .rail h2{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 15px}
+  .threads{display:flex;flex-direction:column;gap:2px}
+  .trow{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+  .trow:first-child{border-top:none}
+  .trow .t{font-family:var(--serif);font-size:16px;letter-spacing:-.01em}
+  .trow .d{font-size:11.5px;color:var(--faint);letter-spacing:.03em;flex:none;font-variant-numeric:tabular-nums}
+
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px 4px}
+  .cal .dow{font-size:10px;color:var(--faint);text-align:center;font-weight:600;letter-spacing:.03em;padding-bottom:3px}
+  .cal .day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:11.5px;color:var(--muted);border-radius:8px;font-variant-numeric:tabular-nums}
+  .cal .day.on{background:var(--accent);color:#F4F1E9;font-weight:600}
+  .cal .day.today{box-shadow:inset 0 0 0 1.5px var(--accent);color:var(--ink);font-weight:600}
+  .cal .day.mute{color:var(--faint);opacity:.5}
+
+  .railnote{font-size:12.5px;color:var(--faint);line-height:1.5;padding-top:20px;border-top:1px solid var(--line)}
+
+  a{color:inherit}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <span class="wordmark">co<span class="dot">.</span></span>
+    <span class="search" role="search" tabindex="0">search your mind…</span>
+    <span class="avatar" aria-label="you"></span>
+  </header>
+
+  <main class="house">
+    <div class="lede">
+      <h1>{{ greeting }}</h1>
+      <p>{{ date }}<span class="sep">·</span>{{ n_held }} things held<span class="sep">·</span>{{ last_active }}</p>
+    </div>
+
+    <div class="layout">
+      <section class="gallery" aria-label="your thoughts">
+        <!-- server emits N cards, newest/most-salient first. card types below -->
+
+        <!-- NOTICED LINE  ← tier='line' rows from co_memory (the memorable things Co actually said) -->
+        <article class="card note"><div class="body">
+          <div class="line">{{ line.text }}</div>
+          <div class="label"><span class="tick"></span>co noticed · {{ line.when }}</div>
+        </div></article>
+
+        <!-- SENT A THING  ← book/song/link sends w/ Co's one-line read (enrichment) -->
+        <article class="card"><div class="body">
+          <div class="thing">
+            <div class="cover book">{{ thing.title }}</div>
+            <div><h3>{{ thing.title }}</h3><p>{{ thing.read }}</p></div>
+          </div>
+          <div class="label"><span class="tick"></span>you sent this · {{ thing.when }}</div>
+        </div></article>
+
+        <!-- PHOTO MEMORY  ← image sends; real <img src> to a token-guarded media route + EXIF caption -->
+        <article class="card photo">
+          <img class="tile" src="{{ photo.url }}" alt="">
+          <div class="cap"><b>{{ photo.title }}</b><br>{{ photo.place_time }}</div>
+        </article>
+
+        <!-- LINK/SHARED  ← video/tweet/reel sends w/ Co's read -->
+        <article class="card link"><div class="body">
+          <div class="kicker">you shared · {{ link.when }}</div>
+          <h3>{{ link.title }}</h3>
+          <p>{{ link.read }}</p>
+          <div class="label"><span class="tick"></span>{{ link.kind }}</div>
+        </div></article>
+
+        <!-- RECOMMENDATION  ← fetch-first (Exa) + graph. RARE, EARNED by a live thread, says WHY, refusable.
+             A rec ONLY renders when it connects to a real open thread; the .why line names that thread.
+             Never a "recommended for you" row — same card language as a sent-thing, just an accent why-line. -->
+        <article class="card rec"><div class="body">
+          <div class="thing">
+            <div class="cover book">{{ rec.title }}</div>
+            <div><h3>{{ rec.title }}</h3><p>{{ rec.blurb }}</p></div>
+          </div>
+          <div class="why"><svg class="spark" viewBox="0 0 24 24" fill="#7E9A84"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg>{{ rec.why }}</div>
+          <div class="dismiss">not for me</div>
+        </div></article>
+
+        <!-- THREAD  ← threads.json open topics/commitments w/ decay days -->
+        <article class="card thread"><div class="body">
+          <h3>{{ thread.title }}</h3>
+          <p>{{ thread.note }}</p>
+          <span class="chip">open · {{ thread.days }}d</span>
+        </div></article>
+
+        <!-- MOMENT  ← a short real exchange worth keeping (you + co bubbles) -->
+        <article class="card moment"><div class="body">
+          <div class="bubble you">{{ moment.you }}</div>
+          <div class="bubble co">{{ moment.co }}</div>
+          <div class="label"><span class="tick"></span>a moment · {{ moment.when }}</div>
+        </div></article>
+
+      </section>
+
+      <aside class="rail">
+        <div>
+          <h2>Open threads</h2>
+          <div class="threads">
+            <div class="trow"><span class="t">{{ t.title }}</span><span class="d">{{ t.days }}d</span></div>
+          </div>
+        </div>
+        <div>
+          <h2>{{ month }}</h2>
+          <div class="cal" role="grid" aria-label="days you talked">
+            <!-- server emits .day / .day.on (talked) / .day.today / .day.mute -->
+          </div>
+        </div>
+        <div class="railnote">Co keeps what matters and lets the rest fade. Anything here, you can correct or forget — it's your house.</div>
+      </aside>
+    </div>
+  </main>
+</div>
+</body>
+</html>

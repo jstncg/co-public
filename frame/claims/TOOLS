@@ -1,0 +1,19 @@
+# Organs that are correctly NOT on a scheduled path: one-shot repairs, audits, CLIs.
+# Anything else unreachable is a wiring bug — see invariants.check_wired.
+# Adding a name here is a claim that it is meant to be run by hand.
+anchors_repair      one-shot: stamps timezones, marks abandoned promises missed
+corpus_repair       one-shot: clears canon from rank and the vector index
+co_eval             the disposition eval, run by the suite
+export_data         member data export
+gmail_audit         inbox audit, read-only
+regate              re-grade claims in bulk
+grade               grading CLI
+forget              the forget flow, invoked per request
+flib                shared library for the forensic analyzers
+email_class         library: the receiving-vs-doing gate
+extract_claims      library: email to claims, used by the forensic wave
+forensic            the forensic extractor, run against an inbox
+synth_calib         library: bounds answer confidence by evidence
+whytree             one-shot: builds a why-tree from email
+shadow_review       one-shot: grades what the scout proposed
+promise_tick        fires requested reminders; LIVE cron */5 — the only proactive class that is never a nag

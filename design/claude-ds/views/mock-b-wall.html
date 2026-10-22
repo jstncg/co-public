@@ -1,0 +1,63 @@
+<!-- @dsCard group="Mockups" -->
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B · the mind wall</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;0,6..72,500&display=swap">
+<style>
+:root{--bg:#f2f1ee;--ink:#232120;--dim:#98948b;--paper:#fff;--quote:#fff6c9;--ticket:#e4efe6;--accent:#e0581f}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font:400 14px/1.5 "Inter",sans-serif;color:var(--ink);background:var(--bg);padding:0 22px 60px}
+.top{max-width:1080px;margin:0 auto;padding:34px 0 8px;display:flex;align-items:baseline;gap:20px}
+.search{flex:1;border:0;outline:none;background:none;font:italic 400 30px "Newsreader",serif;color:var(--ink)}
+.search::placeholder{color:#c6c2b8}
+.modes{display:flex;gap:16px;font-size:12.5px;color:var(--dim)}
+.modes b{font-weight:600;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:2px;cursor:pointer}
+.modes span{cursor:pointer}
+.today{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(90deg,#f6a76b,#e0581f);
+  color:#fff;font-size:12px;font-weight:600;border-radius:99px;padding:6px 14px;margin:14px 0 18px}
+.wall{max-width:1080px;margin:0 auto;column-count:4;column-gap:14px}
+@media(max-width:900px){.wall{column-count:3}}
+@media(max-width:640px){.wall{column-count:2}}
+.card{break-inside:avoid;margin-bottom:14px;border-radius:10px;overflow:hidden;background:var(--paper);
+  box-shadow:0 1px 3px rgba(30,25,15,.08);position:relative}
+.card .cap{font-size:11px;color:var(--dim);padding:0 4px;margin-top:6px}
+.card img{width:100%;display:block;border-radius:10px}
+.card.img{background:none;box-shadow:none}
+.card.img img{box-shadow:0 1px 3px rgba(30,25,15,.12)}
+.quote{background:var(--quote);padding:18px 16px;font:italic 500 15.5px/1.5 "Newsreader",serif}
+.quote .who{font:600 10.5px "Inter",sans-serif;letter-spacing:.05em;text-transform:uppercase;color:#b1a15a;margin-top:10px}
+.note{padding:16px;font-size:13.5px;line-height:1.55}
+.note .who{font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+.ticket{background:var(--ticket);padding:14px 16px}
+.ticket .tk{font-size:13.5px;font-weight:600}
+.ticket .st{font-size:11.5px;color:#4a7a5c;margin-top:3px;font-weight:600}
+.ask{background:var(--paper);padding:14px 16px;border:1.5px dashed #d8d4c8}
+.ask .tk{font-size:13.5px;font-weight:600}
+.ask .bt{display:inline-block;margin-top:10px;margin-right:6px;font-size:12px;font-weight:600;
+  background:var(--ink);color:#fff;border-radius:99px;padding:6px 13px;cursor:pointer}
+.ask .bt.q{background:#eceae4;color:var(--ink)}
+</style></head><body>
+
+<div class="top">
+  <input class="search" placeholder="Search your mind…">
+  <div class="modes"><b>everything</b><span>needs you</span><span>by co</span><span>serendipity</span></div>
+</div>
+<div style="max-width:1080px;margin:0 auto"><span class="today">● today · 3 for you</span></div>
+
+<div class="wall">
+  <div class="card ask"><div class="tk">thursday 8pm still open for the first stream?</div>
+    <span class="bt">hold it</span><span class="bt q">not yet</span></div>
+  <div class="card img"><div style="aspect-ratio:4/5;border-radius:10px;background:linear-gradient(160deg,#c9b493,#8d7b5f)"></div><div class="cap">the craft · kept tuesday</div></div>
+  <div class="card quote">“people hate making decisions but love the illusion of choice”<div class="who">you · aug 8</div></div>
+  <div class="card ticket"><div class="tk">watched the 92-minute interview</div><div class="st">✓ done for you · ask me anything from it</div></div>
+  <div class="card img"><div style="aspect-ratio:1;border-radius:10px;background:linear-gradient(200deg,#9db39b,#4f6650)"></div><div class="cap">first streams · kept friday</div></div>
+  <div class="card note"><div class="who">co's read</div>you keep collecting the tools of the life you want, then filing them instead of using them.</div>
+  <div class="card ask"><div class="tk">notes subscription renews friday, $84</div>
+    <span class="bt">keep</span><span class="bt q">cancel it</span></div>
+  <div class="card quote">“i want the mornings back first”<div class="who">you · jul 27</div></div>
+  <div class="card ticket"><div class="tk">watching gpu prices for the build</div><div class="st">● standing · no move yet</div></div>
+  <div class="card img"><div style="aspect-ratio:4/3;border-radius:10px;background:linear-gradient(190deg,#93a3b5,#4d5a6b)"></div><div class="cap">the move · kept sunday</div></div>
+  <div class="card note"><div class="who">co's read</div>every sharp original insight gets abandoned within a day. the ideas aren't the shortage.</div>
+  <div class="card ticket"><div class="tk">held thursday 8pm · first stream</div><div class="st">✓ on your calendar · delete to undo</div></div>
+</div>
+
+</body></html>

@@ -1,0 +1,35 @@
+<!-- @dsCard group="Foundations" -->
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>co · tokens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --paper:#f3efe7; --ink:#221d13; --dim:#8d8474;
+  --glass:rgba(255,255,252,.55); --glass-edge:rgba(255,255,255,.7); --glass-blur:28px;
+  --accent:#e0581f; --go:#3d7a55; --shadow:0 20px 50px rgba(80,60,20,.10);
+  --display:"Fraunces",Georgia,serif; --ui:"Schibsted Grotesk",-apple-system,sans-serif;
+}
+body{margin:0;background:var(--paper);font-family:var(--ui);color:var(--ink);padding:40px}
+h1{font-family:var(--display);font-weight:500;font-size:28px;margin:0 0 24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.sw{border-radius:16px;padding:16px;height:90px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:var(--shadow)}
+.sw b{font-size:12px;font-weight:600}.sw span{font-size:11px;opacity:.65}
+.type{margin-top:36px}.type>div{margin:14px 0}
+</style></head><body>
+<h1>co · tokens</h1>
+<div class="grid">
+  <div class="sw" style="background:#f3efe7;border:1px solid #0002"><b>paper</b><span>#f3efe7 · ground</span></div>
+  <div class="sw" style="background:#221d13;color:#fff"><b>ink</b><span>#221d13 · text</span></div>
+  <div class="sw" style="background:#8d8474;color:#fff"><b>dim</b><span>#8d8474 · secondary</span></div>
+  <div class="sw" style="background:#e0581f;color:#fff"><b>accent</b><span>#e0581f · one marker</span></div>
+  <div class="sw" style="background:#3d7a55;color:#fff"><b>go</b><span>#3d7a55 · working</span></div>
+  <div class="sw" style="background:rgba(255,255,252,.55);backdrop-filter:blur(28px);border:1px solid rgba(255,255,255,.7)"><b>glass</b><span>55% white · 28px blur</span></div>
+</div>
+<div class="type">
+  <div style="font-family:var(--display);font-size:34px;font-weight:500">The statement voice <mark style="background:#e0581f45;border-radius:4px;padding:0 6px">speaks</mark></div>
+  <div style="font-size:16px;font-weight:600">Interface rows: Schibsted Grotesk 600</div>
+  <div style="font-size:13.5px;color:var(--dim)">Meta and receipts: 13.5px dim</div>
+  <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)">SECTION EYEBROWS · 11PX CAPS</div>
+</div>
+</body></html>

@@ -1,0 +1,33 @@
+{
+  "name": "@co/trigger",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/caps.test.ts test/governance-gates.test.ts test/patterns.test.ts && vitest run test/compile-patterns.test.ts test/refinery-wiring.test.ts test/awareness-preset.test.ts test/context-evidence.test.ts test/gmail-sync.test.ts test/collaboration-run.test.ts",
+    "dev": "trigger dev"
+  },
+  "dependencies": {
+    "@co/contracts": "workspace:*",
+    "@co/google-workspace": "workspace:*",
+    "@co/model-gateway": "workspace:*",
+    "@co/prompts": "workspace:*",
+    "@co/source-adapters": "workspace:*",
+    "@supabase/supabase-js": "^2.45.0",
+    "@trigger.dev/sdk": "4.5.5",
+    "@vercel/connect": "2.0.0",
+    "@co/notifications": "workspace:*",
+    "@co/intelligence": "workspace:*",
+    "@co/processing": "workspace:*",
+    "@co/awareness": "workspace:*",
+    "@co/collaboration-harness": "workspace:*",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3",
+    "tsx": "^4.19.0",
+    "@types/node": "^22.7.0",
+    "vitest": "^3.2.4"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "id": "synthetic-hidden-thesis",
+      "family": "hidden-thesis",
+      "checkpointIndex": 6,
+      "evidenceIndices": [0, 2, 4],
+      "rule": "Identify the precise cross-domain role of dated observations without inventing a motive or assigning a task."
+    }
+  ]
+}

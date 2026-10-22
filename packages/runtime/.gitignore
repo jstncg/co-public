@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+coverage/
+.companion/
+deploy/production.env
+deploy/secrets/
+
+# The repository root ignores generated top-level docs/ output. Runtime design,
+# audit, and migration records are package source and must travel with the code.
+!docs/
+!docs/**

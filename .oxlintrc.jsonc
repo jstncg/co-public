@@ -1,0 +1,29 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["import"],
+  "options": {
+    "denyWarnings": true,
+    "reportUnusedDisableDirectives": "error"
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error"
+  },
+  "ignorePatterns": [
+    "**/.next/**",
+    "**/node_modules/**",
+    "**/docs/reference/**",
+    "**/anti-ai-slop-writing/**"
+  ],
+  "rules": {
+    "import/no-cycle": "error",
+    "import/no-unassigned-import": "off",
+    "no-case-declarations": "error",
+    "no-control-regex": "off",
+    "no-empty": "error",
+    "no-fallthrough": "error",
+    "no-prototype-builtins": "error",
+    "no-var": "error",
+    "prefer-const": "error"
+  }
+}

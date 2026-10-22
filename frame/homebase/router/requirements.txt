@@ -1,0 +1,10 @@
+python-socketio[client]>=5.11.0
+websocket-client>=1.7.0
+requests>=2.31.0
+aiohttp<4
+google-genai>=2.0
+numpy>=2.0
+pillow>=11.0
+anthropic
+beautifulsoup4>=4.13
+html2text>=2024.2.26

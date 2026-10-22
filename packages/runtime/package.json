@@ -1,0 +1,30 @@
+{
+  "name": "@co/runtime",
+  "version": "0.10.0",
+  "private": true,
+  "type": "module",
+  "description": "A durable, model-agnostic personal agent runtime with portable distributions and tenant-scoped profiles.",
+  "bin": {
+    "co": "./src/cli.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "migration": "node src/migration-cli.ts",
+    "start": "node src/cli.ts",
+    "dev": "node --watch src/cli.ts",
+    "check": "tsc --noEmit && node --test test/*.test.ts",
+    "test": "node --test test/*.test.ts",
+    "config:check": "node src/cli.ts config check"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "devDependencies": {
+    "@types/node": "25.0.3",
+    "typescript": "5.9.3"
+  },
+  "dependencies": {
+    "@google/genai": "2.15.0",
+    "@modelcontextprotocol/sdk": "1.30.0"
+  }
+}

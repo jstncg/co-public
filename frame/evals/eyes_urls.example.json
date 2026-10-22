@@ -1,0 +1,14 @@
+{
+  "_": "Real links you have personally opened. Copy to eyes_urls.json (gitignored).",
+  "yt_short":      "https://www.youtube.com/shorts/REPLACE",
+  "x_post":        "https://x.com/USER/status/REPLACE",
+  "x_reply":       "https://x.com/USER/status/REPLACE",
+  "x_quote":       "https://x.com/USER/status/REPLACE",
+  "x_thread":      "https://x.com/USER/status/REPLACE",
+  "x_article":     "https://x.com/i/article/REPLACE",
+  "x_video":       "https://x.com/USER/status/REPLACE",
+  "tiktok_video":  "https://www.tiktok.com/@USER/video/REPLACE",
+  "tiktok_slides": "https://www.tiktok.com/@USER/photo/REPLACE",
+  "ig_reel":       "https://www.instagram.com/reel/REPLACE/",
+  "ig_carousel":   "https://www.instagram.com/p/REPLACE/"
+}

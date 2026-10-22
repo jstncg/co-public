@@ -1,0 +1,13 @@
+.git
+.github
+node_modules
+dist
+coverage
+.env*
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+deploy/secrets
+deploy/production.env
+test
+docs

@@ -1,0 +1,32 @@
+{
+  "name": "co",
+  "private": true,
+  "packageManager": "pnpm@10.14.0",
+  "engines": { "node": ">=24 <27" },
+  "scripts": {
+    "co": "pnpm --filter @co/runtime start",
+    "check:runtime": "pnpm --filter @co/runtime check",
+    "migration": "pnpm --filter @co/runtime migration",
+    "check": "pnpm lint && pnpm format:check && pnpm check:brain && pnpm typecheck && pnpm test && pnpm deadcode",
+    "check:brain": "pnpm --dir frame/brain run check",
+    "lint": "pnpm lint:base && pnpm lint:strict",
+    "lint:base": "oxlint packages trigger apps/web/src frame/brain/runtime-boundary.ts frame/brain/test/runtime-boundary.test.ts --disable-unicorn-plugin --disable-oxc-plugin --disable-typescript-plugin --deny-warnings",
+    "lint:strict": "oxlint -c .oxlintrc.strict.jsonc --type-aware --deny-warnings packages/action-harness/src packages/google-workspace/src packages/contracts/src/action.ts packages/contracts/src/google-workspace.ts packages/contracts/src/awareness.ts trigger/src/lib/context-evidence.ts trigger/src/tasks/collaboration-run-v1.ts trigger/src/tasks/gmail-awareness-tick.ts trigger/src/tasks/gmail-sync-v1.ts apps/web/src/lib/collaboration-service.ts apps/web/src/lib/gmail-awareness-service.ts apps/web/src/lib/google-push-auth.ts apps/web/src/lib/http-status-error.ts apps/web/src/app/api/v1/collaborations apps/web/src/app/api/v1/context/gmail/route.ts apps/web/src/app/api/webhooks/gmail/route.ts",
+    "format": "pnpm format:boundary",
+    "format:check": "pnpm format:check:boundary",
+    "format:all": "oxfmt packages trigger apps/web/src package.json tsconfig.base.json",
+    "format:check:all": "oxfmt --check packages trigger apps/web/src package.json tsconfig.base.json",
+    "format:boundary": "oxfmt packages/action-harness packages/google-workspace packages/contracts/src/action.ts packages/contracts/src/google-workspace.ts apps/web/src/app/api/v1/collaborations apps/web/src/app/api/v1/context/gmail apps/web/src/app/api/webhooks/gmail apps/web/src/lib/collaboration-service.ts apps/web/src/lib/collaboration-service.test.ts apps/web/src/lib/gmail-awareness-service.ts apps/web/src/lib/gmail-awareness-service.test.ts apps/web/src/lib/google-push-auth.ts apps/web/src/lib/http-status-error.ts trigger/src/tasks/collaboration-run-v1.ts trigger/src/tasks/gmail-awareness-tick.ts trigger/src/tasks/gmail-sync-v1.ts trigger/test/collaboration-run.test.ts trigger/test/gmail-sync.test.ts frame/brain/runtime-boundary.ts frame/brain/test/runtime-boundary.test.ts",
+    "format:check:boundary": "pnpm format:boundary --check",
+    "deadcode": "knip --dependencies --production --workspace @co/google-workspace --workspace @co/action-harness --workspace @co/web",
+    "typecheck": "pnpm -r run typecheck",
+    "test": "pnpm -r run test"
+  },
+  "devDependencies": {
+    "knip": "6.32.3",
+    "oxfmt": "0.65.0",
+    "oxlint": "1.80.0",
+    "oxlint-tsgolint": "7.0.2001",
+    "typescript": "6.0.3"
+  }
+}

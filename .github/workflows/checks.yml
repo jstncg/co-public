@@ -1,0 +1,42 @@
+name: Checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm --filter @co/action-harness eval:browser
+
+  database:
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: supabase/setup-cli@v1
+        with:
+          version: 2.111.0
+      - run: supabase start
+      - run: supabase test db --local supabase/tests/gmail_awareness.test.sql
+      - run: supabase test db --local supabase/tests/collaboration_ownership.test.sql
+      - run: supabase test db --local supabase/tests/linq_transport.test.sql
+      - if: always()
+        run: supabase stop --no-backup

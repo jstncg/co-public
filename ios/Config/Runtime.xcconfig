@@ -1,0 +1,8 @@
+// Public client configuration only. These values are safe to ship in the app binary.
+// The optional sibling is for per-machine overrides and remains gitignored.
+// Command-line values used by testflight.sh have higher precedence than this file.
+CO_API_BASE_URL = https:/$()/ptmsbdmbwzfcbzhcrcwa.supabase.co/functions/v1/co-api
+CO_SUPABASE_URL = https:/$()/ptmsbdmbwzfcbzhcrcwa.supabase.co
+CO_SUPABASE_PUBLISHABLE_KEY = sb_publishable_WQ9w-syefFcDLKtVHqlzpQ_d7hdO-tb
+
+#include? "Runtime.local.xcconfig"

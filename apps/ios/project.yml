@@ -1,0 +1,117 @@
+# co — ios app + share extension
+#
+# the .xcodeproj is NOT checked in. humans run:
+#
+#   brew install xcodegen   # once
+#   cd apps/ios && xcodegen generate
+#
+# see docs/adr/001-xcodegen.md.
+#
+# NOTE: signing team is unset (BLOCKED: Apple developer account).
+#       set DEVELOPMENT_TEAM below once the account exists.
+# NOTE: the app group id "group.app.co.shared" is a placeholder.
+#       replace with the real team-registered identifier (app groups are
+#       claimed per developer account) in this file, in Outbox.swift
+#       (Outbox.appGroupID), and in both .entitlements outputs.
+
+name: Co
+
+options:
+  bundleIdPrefix: app.co
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+
+packages:
+  # sqlite-backed app-group outbox store (goal.md §25.2: "grdb is acceptable")
+  GRDB:
+    url: https://github.com/groue/GRDB.swift
+    from: 7.0.0
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    # Team comes from env so the file needs no edit per machine: export CO_TEAM_ID=XXXXXXXXXX
+    # before xcodegen. Empty string = simulator-only (the pre-account state).
+    DEVELOPMENT_TEAM: ${CO_TEAM_ID}
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: 1
+
+targets:
+  Co:
+    type: application
+    platform: iOS
+    settings:
+      base:
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    sources:
+      - Co
+      - Shared
+    dependencies:
+      - target: CoShare
+      - package: GRDB
+        product: GRDB
+    entitlements:
+      path: Co/Co.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.app.co.shared
+    info:
+      path: Co/Info.plist
+      properties:
+        CFBundleDisplayName: co
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        ITSAppUsesNonExemptEncryption: false
+        # permission copy must match actual use (goal.md §27.5)
+        NSMicrophoneUsageDescription: >-
+          co records a voice note only while you are recording one.
+          audio is transcribed and the recording is deleted by default.
+        NSCameraUsageDescription: >-
+          co opens the camera only when you choose to photograph
+          something you want to keep.
+
+  CoShare:
+    type: app-extension
+    platform: iOS
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.co.Co.CoShare
+    sources:
+      - CoShare
+      - Shared
+    dependencies:
+      - package: GRDB
+        product: GRDB
+    entitlements:
+      path: CoShare/CoShare.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.app.co.shared
+    info:
+      path: CoShare/Info.plist
+      properties:
+        CFBundleDisplayName: co
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.share-services
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).ShareViewController
+          NSExtensionAttributes:
+            # accept what host apps actually supply (goal.md §10.2):
+            # public url, plain text, images/screenshots, files, movies.
+            NSExtensionActivationRule:
+              NSExtensionActivationSupportsWebURLWithMaxCount: 1
+              NSExtensionActivationSupportsText: true
+              NSExtensionActivationSupportsImageWithMaxCount: 4
+              NSExtensionActivationSupportsMovieWithMaxCount: 1
+              NSExtensionActivationSupportsFileWithMaxCount: 4
+
+schemes:
+  Co:
+    build:
+      targets:
+        Co: all
+    run:
+      config: Debug

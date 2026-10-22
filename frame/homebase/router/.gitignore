@@ -1,0 +1,6 @@
+.env
+.venv/
+*.log
+*.tmp
+buffer-*.tmp
+prime-buffer.tmp

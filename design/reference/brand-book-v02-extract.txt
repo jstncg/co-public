@@ -1,0 +1,1232 @@
+Kyo
+CLOUD INSTRUMENT
+
+
+
+
+Brand book v02
+Built from the two selected directions: the poetic
+archive board and the aluminum-forward product
+board.
+
+Purpose: translate the moodboards into a codable
+design system for app, landing page, product
+surfaces, and future brand expressions.
+
+
+
+
+A quiet instrument for memory and self-understanding.
+ORIENTATION
+
+
+
+
+How to use this book
+This is a direction, a system, and a build handoff - not just a moodboard.
+
+
+WHAT IT DECIDES                                                                                WHAT IT LEAVES OPEN
+
+
+
+1. The brand territory: Cloud Instrument.                                                      1. Final custom wordmark drawing.
+2. The palette, type, materials, layout, and texture rules.                                    2. Final photography shoot and 3D object system.
+3. The interface principles for the app, archive, cards, and landing                           3. Exact app screen interaction states.
+page.                                                                                          4. Fine-grained motion studies after the UI prototype exists.
+4. The implementation tokens Codex/Claude can turn into code.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                       BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+SOURCE DIRECTIONS
+
+
+
+
+The selected visual basis
+Use the first for atmosphere and binder poetry, the second for palette,
+aluminum, and system logic.
+  SELECTED BOARD 01 - POETIC ARCHIVE                                                             SELECTED BOARD 02 - ALUMINUM PRODUCT SYSTEM
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                    BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+EXECUTIVE DECISION
+
+
+
+
+The winning direction
+Kyo should feel like a personal archive built with the precision of a beloved
+object.
+
+  Cloud Instrument is the strongest name for the visual
+  system. It keeps the emotional tenderness of an archive
+  while giving the app the credibility of something
+  engineered. The result is not nostalgic journaling and not
+  generic AI utility. It is a tactile, intelligent instrument for
+  noticing patterns in a life.
+
+
+
+
+  FORMULA
+
+
+
+
+  archive intimacy + aluminum precision + cloud-blue softness
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                          BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+STRATEGIC FIT
+
+
+
+
+Why this direction fits Kyo
+The visual world should make the product feel remembered, not automated.
+
+
+KYO IS NOT AN ASSISTANT                                                                      THE DESIGN TRANSLATION
+
+
+
+The brand must never look like a productivity dashboard. Kyo is built                        The binder says archive. Aluminum says reliability. Vellum says
+around memory, compounding understanding, and an earned                                      privacy and layering. Watercolor says human interpretation. The quiet
+relationship. The design should feel like opening an object that has                         graph says your life is connected, but it should never look like a data
+been quietly keeping track, not launching a tool that demands tasks.                         product first.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                     BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+BRAND PLATFORM
+
+
+
+
+Brand idea
+A second brain you can hold.
+
+
+  Kyo collects the fleeting, connects the meaningful,
+  and helps the user understand what those patterns
+  reveal over time. The brand should communicate an
+  intelligence that is deeply personal, calm under
+  pressure, and built to last.
+
+
+
+
+  CORE PROMISE
+
+
+  Kyo helps people understand who they are becoming, not merely what
+  they have captured.
+
+
+
+
+  EMOTIONAL RESULT
+
+
+  The user should feel clarity, safety, agency, and the strange comfort of
+  being accurately remembered.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                       BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+BRAND PLATFORM
+
+
+
+
+Personality spectrum
+The brand is quiet, but not empty. It has opinions, restraint, and presence.
+
+
+    Quiet                       not silent or cold                                                  Intelligent         not dashboard-like
+
+
+
+
+    Human                       not sentimental                                                     Premium             not precious
+
+
+
+
+    Precise                     not sterile                                                         Trustworthy         not institutional
+
+
+
+
+    Tactile                     not nostalgic                                                       Earned              not performative
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                         BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+VISUAL DNA
+
+
+
+
+The five visual pillars
+Every brand expression should contain at least three of these five.
+
+    LAYERED ARCHIVE                                                   CLOUDED BLUE                                            ALUMINUM PRECISION
+
+
+    Binder, cards, translucent sheets,                                Mist, memory, calm, distance, atmosphere,               Clips, rings, rails, corners, object
+    provenance, history.                                              introspection.                                          permanence, engineering.
+
+
+
+
+    QUIET TYPOGRAPHY                                                  SUBTLE GRAPH
+
+
+    EB Garamond-like display with Inter-like                          Connections and patterns appear as quiet
+    functional UI.                                                    structure, never as sci-fi.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                               BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+COLOR
+
+
+
+
+Palette overview
+Cool, quiet, metallic, and atmospheric. No warm paper, no ember, no clay.
+
+                         Stone                             Cloud                           White                     Aluminum     Mist Blue
+                         #F2F3F4                           #EEF2F6                         #FFFFFF                   #D6DDE4      #D7E3EE
+
+
+
+
+                         Powder Blue                       Washed Slate                    Watercolor Blue           Steel Blue   Ink
+                         #C9DCEA                           #9FB3C6                         #6E8FAF                   #587895      #11161C
+
+
+
+
+    The palette should read as a cool stack of whites before it reads as blue.
+    Blue appears as memory, focus, atmosphere, and interactive signal.
+    Aluminum appears as structure, edges, hinges, and material credibility.
+    Ink should be sparing and never become a large black field.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                      BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+COLOR
+
+
+
+
+Color roles
+Every color needs a job. If it does not have a job, it does not enter the system.
+
+                 SURFACE / STONE       Default page and marketing background. Cool                                     PRIMARY BLUE     Main brand blue. Used for active memory
+                 #F2F3F4                                                                                               #6E8FAF
+                                       white, not beige.                                                                                surfaces and signature moments.
+
+
+
+                 SURFACE / CLOUD       Cards, panels, empty states, inactive rails.                                    SECONDARY BLUE   Graphs, metadata, tags, support imagery.
+                 #EEF2F6                                                                                               #9FB3C6
+
+
+
+
+                 MATERIAL / ALUMINUM   Borders, separators, disabled fills, product                                    INK              Body text and rare emphasis. Avoid large fields.
+                 #D6DDE4                                                                                               #11161C
+                                       renders.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                                BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+COLOR
+
+
+
+
+Surface hierarchy
+The product should feel like white on white on white, but still legible.
+
+   Use at least three cool-white layers in major
+   compositions. This creates the Hanwell-like pop without
+   needing loud color: page background, card surface,
+   object/page surface, and aluminum edge.
+
+
+
+
+   RECOMMENDED LADDER
+
+
+   1. App shell: Stone #F2F3F4
+   2. Elevated cards: Cloud #EFF2F6 or White #FFFFFF
+   3. Nested cards: White with 1px Aluminum border
+   4. Selected/active: Mist Blue wash or Watercolor Blue text
+   5. Critical foreground: Ink #11161C
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                     BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+COLOR
+
+
+
+
+Blue hierarchy
+Blue is not decoration. It is the language of memory, capture, and connection.
+
+
+                   MIST BLUE
+                                     Large gentle fields, washed cards, inactive memory
+                   #D7E3EE
+                                     surfaces.
+
+
+
+                   POWDER BLUE
+                                     Voice note cards, hover states, tag backgrounds.
+                   #C9DCEA
+
+
+
+
+                   WASHED SLATE
+                                     Graph nodes, secondary CTAs, metadata.
+                   #9FB3C6
+
+
+
+
+                   WATERCOLOR BLUE
+                                     Primary signal, selected tab, main graph nodes.
+                   #6E8FAF
+
+
+
+
+                   STEEL BLUE
+                                     Buttons, small caps labels, footer identity.
+                   #587895
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                              BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+COLOR
+
+
+
+
+Color exclusions
+These colors pull Kyo into the wrong category. Keep them out by default.
+
+    • No ember or orange as a brand accent. It introduces heat and noise that                             REPLACE WITH
+
+      conflicts with calm reflection.
+    • No warm paper as a default surface. It pushes toward nostalgia, stationery, and                     Use aluminum instead of grey-black. Use mist blue
+      therapy journals.                                                                                   instead of warm cream. Use ink only for type and
+    • No oat or clay. They make the brand feel lifestyle-coded rather than precise                        precision. Use watercolor as a restrained atmospheric
+      and technological.                                                                                  layer, not a general background texture.
+    • No large black or void fields. The darkness makes Kyo feel cinematic, not safe
+      and companionate.
+    • No visible grid as a brand texture. The graph can exist, but the surface should
+      not become a design-tool canvas.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                     BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+COLOR
+
+
+
+
+Accessibility and contrast
+The brand is pale, but the interface cannot be faint.
+
+    • Body text on Stone or Cloud should use Ink #11161C or Ink Soft #1F242B.                                         RULE OF THUMB
+
+    • Steel Blue should be used for labels and navigation, but not for long body copy
+                                                                                                                      If a screenshot becomes hard to read when desaturated, the
+      below 14px.
+                                                                                                                      system is too subtle for product use.
+    • Mist Blue and Powder Blue are surfaces, not text colors.
+    • Active states require either a dark label, a clear 1px edge, or a filled blue control -
+      never color alone.
+    • Texture overlays must never reduce text contrast. Use them as background imagery
+      or masked fills only.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                       BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+TYPOGRAPHY
+
+
+
+
+Typography system
+The font system should feel literary in brand moments and invisible in UI
+moments.
+
+
+
+
+    The quiet holds
+    what is worth keeping.
+    Display / logo: EB Garamond or a custom serif drawn from the same
+    spirit. The Kyo wordmark should be thicker than the first generated
+    option, with soft bracketed serifs and calm proportion.
+
+
+
+
+    UI / body: Inter or an equivalent minimalist grotesk. It should
+    disappear, maintain tight clarity at small sizes, and provide a neutral
+    counterweight to the serif.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                        BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+TYPOGRAPHY
+
+
+
+
+Wordmark direction
+Kyo should feel substantial, quiet, and slightly bookish - never thin or fashion-
+fragile.
+
+
+
+
+    Kyo
+      WORDMARK RULES
+
+
+      • Start from EB Garamond Semibold/Medium, then refine letterforms
+        manually.
+      • Keep the K strong and architectural; avoid overly delicate hairlines.
+      • The y descender should be elegant but not flamboyant.
+      • Use optical tracking slightly tighter than default for the final lockup.
+      • Use title case Kyo for the mark; lowercase kyo can remain the
+        prose/product spelling.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                              BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+TYPOGRAPHY
+
+
+
+
+Product type scale
+Use type as a confidence system: serif for meaning, sans for action.
+    HERO SERIF                  EB Garamond Medium                     56-72px / -1.5% tracking                          Landing page hero, marketing openers
+
+
+
+
+    DISPLAY SERIF               EB Garamond Medium                     36-48px / -0.5% tracking                          Insight cards, archive chapter covers
+
+
+
+
+    TITLE SANS                  Inter Medium                           20-28px                                           Screen titles, modal titles
+
+
+
+
+    BODY SANS                   Inter Regular                          15-17px                                           App copy, card body, long text
+
+
+
+
+    LABEL SANS                  Inter Semibold                         11-12px / +12-18% tracking                        Small caps, tags, metadata
+
+
+
+
+    CAPTION SANS                Inter Regular                          11-13px                                           Provenance, dates, secondary notes
+
+
+
+
+    Implementation note: do not force EB Garamond into tiny UI labels. It is beautiful because it appears at moments of
+    interpretation, not in every control.
+
+KYO - CLOUD INSTRUMENT                                                                   BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+IDENTITY
+
+
+
+
+Logo and mark system
+Keep the system simple: wordmark, K monogram, and a rare connection mark.
+    PRIMARY WORDMARK                                              K MONOGRAM                                                CONNECTION MARK
+
+
+    Kyo in a thicker EB Garamond-like serif. Use for              A simple K inside a soft rounded square or thin circle.   A subtle K/graph construction for internal system
+    marketing, app splash, profile card, and archive              Use for app icon, favicon, loading, and small hardware    diagrams and future brand moments. Use sparingly.
+    covers.                                                       marks.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                           BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+IDENTITY
+
+
+
+
+App icon direction
+The icon should feel like a small instrument, not a chatbot avatar.
+
+
+    Recommended icon: a K monogram in EB Garamond-like serif,
+    set on a clouded aluminum-blue rounded square. The
+    background should feel frosted and layered, with a barely
+    visible watercolor or vellum diffusion, not a flat gradient.
+
+
+
+
+    • Foreground: white or Ink depending on background tone.
+    • Background: Mist/Steel Blue with a soft aluminum edge or inner
+      glow.
+    • Avoid: chat bubbles, stars, robot faces, hearts, abstract AI sparkles.
+    • Optional: tiny edge highlight to imply hardware and touchability.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                         BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+MATERIALS
+
+
+
+
+Material system
+Kyo should feel like paper kept inside a precise instrument.
+
+    ALUMINUM                                                   VELLUM                                                    FINE PAPER
+
+
+    Structure, trust, durability, edges, clips,                Privacy, opacity, partial memory, layers,                 Human record, provenance, reflection,
+    rings.                                                     time.                                                     calm.
+
+
+
+
+    WATERCOLOR                                                 GRAPHITE
+
+
+    Interpretation, meaning, atmosphere,                       Thought, precision, small marks, quiet
+    emotional signal.                                          correction.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                          BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+MATERIALS
+
+
+
+
+Aluminum language
+Aluminum is the credibility layer. It makes the soft parts feel held.
+
+    • Use aluminum as edges, rules, hardware metaphors, dividers, and
+      control affordances.
+    • Never make the whole interface metallic. The aluminum should be the
+      frame, not the room.
+    • Digital translation: 1px cool borders, subtle top highlights, low-opacity
+      inner shadows, and clear radius consistency.
+    • Physical translation: brushed or anodized silver, rounded corners,
+      visible clips, hinge logic, and tactile closure details.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                        BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+MATERIALS
+
+
+
+
+Paper, vellum, and translucence
+These materials communicate memory, intimacy, and partial knowledge.
+
+
+    The archive is not a hard database. It is layered. Vellum lets the
+    user feel that memory is partly visible, partly covered, and slowly
+    understood. Paper gives the system human scale. Use it in empty
+    states, memory cards, archive covers, onboarding profile cards,
+    and marketing imagery.
+
+
+
+
+    DIGITAL RULES
+
+
+
+    Low opacity textures only. Use them as masked backgrounds, not tiled
+    wallpaper. Add texture at 4-10% opacity unless it is the hero visual. Keep
+    text on clean surfaces.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                       BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+MATERIALS
+
+
+
+
+Watercolor language
+Watercolor is the atmosphere of understanding, not the brand itself.
+
+    • Use watercolor to indicate meaning forming out of memory: insights,
+      reflections, selected archive covers.
+    • Prefer pale blue washes with organic edges and paper grain.
+    • Avoid rainbow watercolor, paint splashes, or art-school expressionism.
+    • Do not put body text over strong texture. Use a clean white or cloud overlay
+      when text must sit nearby.
+    • Watercolor can animate subtly as a slow reveal or diffusion, but should
+      never loop distractingly.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                      BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+MATERIALS
+
+
+
+
+Texture implementation
+Texture should be an asset system with rules, not a random overlay.
+
+
+ASSET TYPES                                                                             IMPLEMENTATION RULES
+
+
+
+1. Paper grain - 1x and 2x seamless PNGs.                                               Keep texture outside the semantic color token layer. Tokens define
+2. Watercolor washes - masked SVG/PNG assets.                                           color; texture assets define material. This keeps the app accessible
+3. Vellum blur panels - CSS/SwiftUI material effects.                                   and themeable. Every textured component needs a non-textured
+4. Aluminum strokes - borders, highlights, and photographic crops.                      fallback for low-power mode, accessibility, and performance.
+5. Embossed marks - used only in brand and onboarding moments.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+IMAGERY
+
+
+
+
+Photography direction
+The camera should make Kyo feel tangible before the product is fully tangible.
+
+    • Shoot real materials: translucent paper, frosted acrylic, aluminum edges, binder
+      rings, paper grain, water droplets.
+    • Lighting should be cool, soft, and directional. Avoid warm sunset lifestyle
+      photography.
+    • Composition should be quiet and spacious. Let small blue details carry
+      attention.
+    • Depth of field can be shallow in material shots, but hero compositions should
+      remain clean and legible.
+    • Human imagery should be rare, documentary, and provenance-based - not
+      stock wellness photography.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                           BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+LAYOUT
+
+
+
+
+Layout principles
+The layout should feel archived, not assembled.
+
+    • Use editorial compositions with large negative space and one calm
+      focal object.
+    • Avoid dense dashboard grids. Kyo is not analytics software.
+    • Separate groups with hairline rules, not heavy cards.
+    • Use asymmetry when showing memory or archive; use symmetry
+      when showing trust and setup.
+    • Let images sit as objects on the page, with subtle shadows and soft
+      edges.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                      BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+LANDING PAGE
+
+
+
+
+Landing page direction
+A landing page that opens like a quiet object, not a SaaS homepage.
+
+
+    The first impression should be a white-on-white hero
+    centered around a binder or instrument object. The headline
+    should be sparse, high-confidence, and serif-led. The CTA
+    should be small and calm. Avoid feature grids above the fold.
+
+
+
+
+    ABOVE THE FOLD
+
+
+    •   Logo top left, minimal nav top right.
+    •   Hero object occupies 55-65% of the viewport.
+    •   Headline: one sentence, serif, emotional but clear.
+    •   CTA: small cloud/white button, no neon.
+    •   Secondary line: product category without buzzwords.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+LANDING PAGE
+
+
+
+
+Hero anatomy
+The binder is the metaphor: a personal archive that becomes intelligent over
+time.
+    STRUCTURE
+
+
+    •   Hero object: frosted binder / clouded memory instrument.
+    •   Main copy: one emotional promise, not a feature claim.
+    •   Microcopy: explains capture, connect, reveal in one line.
+    •   Motion: very slow parallax between page, vellum, and hardware layers.
+    •   Optional interaction: hover reveals a faint memory graph inside the paper.
+
+
+
+
+    EXAMPLE COPY
+
+
+
+    A quiet instrument for memory.
+    Capture the fleeting. Connect the meaningful. Reveal the patterns
+    shaping your life.
+
+
+
+KYO - CLOUD INSTRUMENT                                                         BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+PRODUCT UI
+
+
+
+
+Interface direction
+The app should look like an archive that can talk back.
+
+
+CORE SURFACES                                                               VISUAL BEHAVIOR
+
+
+
+Home: capture first, chat always available.                                 Surfaces should be light, tactile, and calm. UI should use fewer
+Cards: evening ritual, reflection prompts, options.                         panels than a productivity tool. Information appears as cards and
+Archive: living record, memories and arcs.                                  pages, not widgets. Blue marks the meaningful; aluminum frames the
+Graph: quiet connective layer, not a dashboard.                             durable.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                    BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+PRODUCT UI
+
+
+
+
+Home and capture
+Home is Kyo opening its eyes, not a chat start screen.
+
+    • Capture area is the hero: camera, upload, or share entry should feel immediate
+      and frictionless.
+    • Chat is available but not dominant. The center of gravity is feeding Kyo your
+      life.
+    • Use the material language sparingly: a clouded capture surface, aluminum nav,
+      and clean input rail.
+    • After capture, the reaction should feel specific and attentive, not like a receipt.
+    • The UI should feel quiet enough to make sharing a thought feel natural.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                         BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+PRODUCT UI
+
+
+
+
+Cards and the evening ritual
+Cards are the most important repeated brand surface.
+
+
+    Cards should feel like small pieces of paper Kyo has prepared for you.
+    They are not task cards or habit checklists. Each card has a point of
+    view and asks for signal without forcing a long conversation.
+
+
+
+
+    CARD DESIGN RULES
+
+
+    •   White or Cloud fill, 1px Aluminum edge, 14-22px radius.
+    •   Serif for high-meaning observation; Inter for answer choices.
+    •   Watercolor or photo appears as a material accent, not a background for text.
+    •   Options should feel like considered language, not survey buttons.
+    •   Dismissal should be quiet; no guilt, no red error states.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                            BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+PRODUCT UI
+
+
+
+
+Archive and memory surfaces
+The archive is a library, not a feed.
+
+    • Archive cards should look like quiet objects with provenance: date, source,
+      connection, and memory type.
+    • Arcs should be book-like: user-renamable, with Kyo-generated covers and
+      meaningful chapters.
+    • Images can appear with tactile framing: paper borders, white mats, subtle
+      shadow.
+    • Memory deletion and provenance must be visually clear without turning the
+      archive into settings.
+    • The archive should reward slow browsing and reflective return.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                      BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+PRODUCT UI
+
+
+
+
+Memory graph
+The graph is a quiet layer of interpretation, not the main character.
+
+
+    The graph should appear when it helps the user understand why
+    two things are connected. It should feel like pencil on paper or a
+    faint aluminum wireframe, not a sci-fi network visualization.
+
+
+
+
+    • Use low-opacity lines, small nodes, and minimal labels.
+    • Center node should be a concept, memory, or arc, never the user as a
+      quantified self.
+    • Use interaction to reveal details progressively.
+    • Keep animation slow and earned: a connection appearing should feel like
+      a thought forming.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                     BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+COMPONENTS
+
+
+
+
+Component principles
+Components should feel tactile, quiet, and intentional.
+
+    CARDS                                                 BUTTONS                                                  INPUTS
+
+
+    Paper objects with soft edge, clear                   Small, quiet, confident. Use filled Steel Blue           White/cloud fields with aluminum border
+    hierarchy, and one purpose.                           only when decisive.                                      and calm focus ring.
+
+
+
+
+    TABS                                                  MENUS                                                    TAGS
+
+
+    Hairline, small labels, active state via ink          Sparse, no rounded pill clutter, no                      Tiny, pale blue, metadata-like, never
+    label plus blue line.                                 dashboard chrome.                                        gamified badges.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                    BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+COMPONENTS
+
+
+
+
+Buttons, inputs, and states
+Interactive elements should never overpower the memory.
+
+
+BUTTONS                                                                              INPUTS AND FOCUS
+
+
+
+Primary: Steel Blue fill, Cloud text, 12-16px radius.                                Default input: White fill, Aluminum border.
+Secondary: Cloud fill, Aluminum border, Ink text.                                    Focus: Watercolor Blue 2px ring or soft outer glow.
+Tertiary: text link in Steel Blue with no underline until hover.                     Disabled: Stone fill, Aluminum text.
+Danger: use Ink and copy before using red. Deletion is rare and                      Error: use message and border treatment; avoid aggressive red
+should be deliberate.                                                                unless truly necessary.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                             BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+COMPONENTS
+
+
+
+
+Elevation and depth
+Depth should resemble layered materials, not app-card shadows.
+
+    • Use subtle shadows with large blur and low opacity, as if paper is floating just
+      above stone.
+    • Use 1px borders more often than shadows in dense UI.
+    • Elevated cards should rise 2-8px visually; modal surfaces can rise 12-20px.
+    • Use inner highlights for aluminum or frosted surfaces, but never make them
+      glossy.
+    • Avoid heavy drop shadows, dark glows, glassmorphism excess, and
+      neumorphic buttons.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                        BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+MOTION
+
+
+
+
+Motion system
+Motion should feel like attention arriving, not UI showing off.
+
+    • Default duration: 180-240ms for controls, 500-900ms for meaning reveals.
+    • Easing: soft ease-out; avoid elastic or playful bounces.
+    • Capture reaction: slight material lift, then text appears with a calm fade.
+    • Graph connection: node fades first, line draws slowly second, label arrives last.
+    • Archive open: card expands like a page turning or vellum layer lifting, but never literal
+      gimmickry.
+    • Reduced motion: replace movement with opacity transitions and state changes.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                           BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+VOICE
+
+
+
+
+Voice and copy
+Copy should sound like a thoughtful confidant with restraint.
+
+
+VOICE QUALITIES                                                                        COPY RULES
+
+
+
+Specific, calm, and earned.                                                            Prefer: "I noticed..." when there is evidence.
+Observational, not inspirational.                                                      Prefer: "Am I right that...?" when uncertain.
+Warm, not soothing.                                                                    Avoid: generic affirmations, therapy-speak, productivity language, AI
+Direct, not motivational.                                                              feature claims, and anything that sounds like a notification system
+Opinionated when history supports it.                                                  pretending to care.
+Hedged when confidence is low.
+
+
+
+
+    SAMPLE
+
+
+
+    "You keep returning to ideas about craft and patience. I do not think
+    this is just aesthetic taste. It seems like the shape of the life you want."
+
+
+
+
+KYO - CLOUD INSTRUMENT                                               BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+MOTION
+
+
+
+
+Haptics and sound
+The physical metaphor can extend into interaction, but it must stay subtle.
+
+    •   Capture: light tactile tick, like closing a binder ring or placing a page.
+    •   Card answered: soft confirmation haptic, no celebratory reward animation.
+    •   Insight arrives: no sound by default. Kyo should not be needy.
+    •   Archive open: optional soft page-like haptic, never a skeuomorphic sound.
+    •   Missed ritual or ignored card: no guilt, no alert escalation, no red badge
+        pressure.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                        BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+HANDOFF
+
+
+
+
+Design tokens summary
+This is the initial coding layer for app, web, and design files.
+
+    • Color tokens define role, not just name: surface, text, border, action, material,
+      memory.
+    • Typography tokens separate brand display, product title, UI body, labels, captions,
+      and mono/meta.
+    • Material tokens define texture asset usage: grain opacity, wash opacity, vellum
+      blur, aluminum edge.
+    • Motion tokens define duration, easing, and reduced-motion fallback.
+    • Component tokens define radius, shadow, border, padding, and state behavior.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                       BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+HANDOFF
+
+
+
+
+CSS variable seed
+Use this as a starting vocabulary, then convert into your chosen token pipeline.
+
+                                                                                                           BUILD NOTE
+
+
+                                                                                                           The attached JSON contains fuller token detail for colors, type, radius,
+                                                                                                           elevation, materials, motion, and components.
+
+
+
+    :root {
+      --kyo-surface-stone: #F2F3F4;
+      --kyo-surface-cloud: #EFF2F6;
+      --kyo-material-aluminum: #D6DDE4;
+      --kyo-blue-mist: #D7E3EE;
+      --kyo-blue-watercolor: #6E8FAF;
+      --kyo-text-ink: #11161C;
+      --kyo-font-display: "EB Garamond";
+      --kyo-font-ui: "Inter";
+      --kyo-radius-card: 18px;
+      --kyo-border-hairline: 1px solid #D6DDE4;
+    }
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                             BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+HANDOFF
+
+
+
+
+SwiftUI implementation seed
+The iOS app should use the same token names as web wherever possible.
+
+
+
+
+    enum KyoColor {
+      static let surfaceStone = Color(hex: 0xF2F3F4)
+      static let surfaceCloud = Color(hex: 0xEFF2F6)
+      static let materialAluminum = Color(hex: 0xD6DDE4)
+      static let blueWatercolor = Color(hex: 0x6E8FAF)
+      static let textInk = Color(hex: 0x11161C)
+    }
+
+    struct KyoCardStyle: ViewModifier {
+      func body(content: Content) -> some View {
+        content
+         .background(KyoColor.surfaceCloud)
+         .overlay(RoundedRectangle(cornerRadius: 18)
+          .stroke(KyoColor.materialAluminum, lineWidth: 1))
+      }
+    }
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                  BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+HANDOFF
+
+
+
+
+Design system file structure
+Give the implementation agent a structure that preserves brand intent.
+                                                                                        AGENT INSTRUCTIONS
+
+
+
+    /design-system                                                                      •   Implement tokens first, components second, screens third.
+     /tokens                                                                            •   Do not hard-code color values in component files.
+      colors.json                                                                       •   Every texture use must have a boolean off switch.
+      typography.json                                                                   •   Keep Kyo serif out of tiny controls.
+      materials.json                                                                    •
+      motion.json                                                                           Document each component with visual examples on Stone and Cloud
+     /assets                                                                                backgrounds.
+      /textures/paper-grain
+      /textures/watercolor
+      /materials/aluminum
+     /components
+      KyoCard
+      KyoButton
+      KyoInput
+      MemoryCard
+      EveningCard
+      ArchiveCard
+      MemoryGraph
+     /brand
+      wordmark.svg
+      monogram.svg
+      app-icon.psd or fig
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                   BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+HANDOFF
+
+
+
+
+Quality bar before build handoff
+The design system should be judged by feel, not just screenshots.
+
+    •   Does the interface still feel calm after real user data is inside it?
+    •   Are there at least three white layers before blue enters the scene?
+    •   Can a user understand what is interactive without loud colors?
+    •   Do texture and typography support meaning, or are they decorative?
+    •   Would this still feel premium if all imagery were removed?
+    •   Does the UI avoid looking like a chatbot, dashboard, therapy app, or habit tracker?
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                         BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+GUARDRAILS
+
+
+
+
+What not to do
+The wrong move turns Kyo into a category the product is explicitly not in.
+
+    • Do not make it look like Notion, Arc, Raycast, or a generic AI dashboard.
+    • Do not use noisy gradients, rainbow AI glows, sparkles, or black-mode sci-fi
+      treatments.
+    • Do not overuse cards, pills, badges, or dashboard modules in the marketing page.
+    • Do not let the serif become decorative. It should carry meaning, not vibe.
+    • Do not overdo the Japanese cues. The name has meaning; the brand should not
+      become aesthetic cosplay.
+    • Do not use warm lifestyle imagery, wellness stock photos, or therapy-app pastel
+      palettes.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                       BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+NEXT WORK
+
+
+
+
+Recommended next explorations
+These are the next concrete design tasks after this brand book.
+
+    • Draw a custom Kyo wordmark from EB Garamond Medium/Semibold and test at app-
+      icon scale.
+    • Create a 12-piece texture asset pack: paper grain, vellum, blue washes, aluminum
+      edges.
+    • Prototype the landing hero in WebGL/CSS using layered binder imagery or a 3D object
+      render.
+    • Build a Figma component set for cards, archive cards, buttons, tabs, input rail, and
+      graph nodes.
+    • Test the UI with actual Kyo content: raw photo share, reel reaction, evening card,
+      archive memory, and a tension question.
+    • Validate accessibility of the pale system on mobile in daylight conditions.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                    BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+APPENDIX
+
+
+
+
+Selected board 01
+Poetic archive: strongest for emotional texture, binder, memory graph, and quiet
+editorial atmosphere.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                             BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+APPENDIX
+
+
+
+
+Selected board 02
+Aluminum product system: strongest for palette, product credibility, interface
+snippets, and hardware language.
+
+
+
+
+KYO - CLOUD INSTRUMENT                                                           BUILT FOR DEPTH. DESIGNED FOR CLARITY.
+

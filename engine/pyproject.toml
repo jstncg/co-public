@@ -1,0 +1,12 @@
+[project]
+name = "co-engine"
+version = "0.1.0"
+description = "THE engine — one importable package for every organ in the co family"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.setuptools]
+packages = ["co_engine"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

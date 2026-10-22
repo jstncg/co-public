@@ -1,0 +1,61 @@
+# Vendored research / separate projects — not part of the frame product
+research/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Secrets / runtime state (never commit)
+.env
+*.env
+.donna_*.json
+*token*
+*.pem
+
+# Screenshots / images — local reference only, never committed
+*.png
+reference/
+
+# Generated morning briefs (personal content, local only)
+briefs/
+
+# OS
+.DS_Store
+
+# Claim store (personal data, local only)
+claims/claims.db
+claims/*.db
+
+# Throwaway test/holdout tenant dbs (fixtures, not referenced by any code)
+claims/_virgin_holdout/
+claims/_founder_prefill_archive/
+
+# Benchmark answer sheets (personal data — bank accounts etc.)
+benchmark/results-*.md
+
+# personal ground-truth answer key — local only
+benchmark/groundtruth.md
+benchmark/groundtruth_heldout.md
+claims/claims_*.db
+
+# personal writings + dossier — kept on disk, never on GitHub
+_private/
+
+# per-tenant runtime state (personal data — never commit)
+claims/*.transcript.json
+claims/*.ledger.json
+claims/*.core.md
+
+# Node (pi-donna is self-contained)
+node_modules/
+package-lock.json
+claims/claims_*.db.*
+claims/claims.db.*
+claims/*.anchors.json
+.gstack/
+claims/_virgin_holdout/
+BUILD_LOG.md
+evals/eyes_urls.json

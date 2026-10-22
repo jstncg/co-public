@@ -1,0 +1,20 @@
+{
+	"name": "co-engine",
+	"private": true,
+	"type": "module",
+	"description": "Co's brain — ONE engine (brain.ts) behind an OpenAI-compatible endpoint (server.ts). Self-contained: npm install here, then `node server.ts`. (The historical run-home is diyagi/pi, kept in sync; either works.)",
+	"scripts": {
+		"start": "node server.ts",
+		"eval": "node eval.ts",
+		"check": "node --experimental-strip-types --check server.ts && node --experimental-strip-types --check brain.ts && node --experimental-strip-types --check memory.ts && node --experimental-strip-types --test test/*.test.ts",
+		"test": "node --experimental-strip-types --test test/*.test.ts"
+	},
+	"dependencies": {
+		"@earendil-works/pi-agent-core": "^0.76.0",
+		"@earendil-works/pi-ai": "^0.76.0",
+		"typebox": "1.1.38"
+	},
+	"engines": {
+		"node": ">=22.19.0"
+	}
+}

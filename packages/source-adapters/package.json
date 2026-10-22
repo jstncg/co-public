@@ -1,0 +1,21 @@
+{
+  "name": "@co/source-adapters",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/adapter.test.ts test/rss.test.ts test/websearch.test.ts && vitest run test/adapters.test.ts"
+  },
+  "dependencies": {
+    "@co/contracts": "workspace:*",
+    "fast-xml-parser": "5.10.1",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "tsx": "^4.19.0",
+    "@types/node": "^22.7.0",
+    "vitest": "^3.2.4"
+  }
+}

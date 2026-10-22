@@ -1,0 +1,19 @@
+# Built, deliberately not scheduled, with the reason. Distinct from TOOLS (meant to be run by hand)
+# and from a wiring bug (nobody meant it to be dark). Every line here is a debt someone chose.
+# invariants.check_wired prints this list on every run so parking cannot become forgetting.
+unasked_delivery    goal.md §8 names it the day-zero move; docstring claimed a Fri 18:00 cron that never existed
+openings            needs the mandate model before it may propose acts
+situations          feeds openings; parked with it
+sitdown             books calendar time and places a call, the loudest thing co does
+reach_out           the proactive brain; superseded in practice by wake, kept for its WHEN model
+second_opinion      duplicates wake, which is scheduled and outperformed it; delete once wake absorbs the shape
+contradictions      the bubble-pop lane, blocked on the salience question
+infer               the inference tier, blocked on the same
+staff               groundwork organ, waits on the hands
+giftrate            measures whether co adds or extracts; wants landed to have real volume first
+cold_open           first-contact read, superseded by firstcontact.ts on the product surface
+proactive_tick     retired at the 9/6 cutover; initiative moved to packages/runtime
+bits               library, imported by the wrapped surface
+exemplars          library, read by the brain's prompt assembly
+list_dispatch      lane held with the other proactive lanes pending the runtime's arbiter
+trigger_baselines  one-shot, run by hand when baselines are re-cut

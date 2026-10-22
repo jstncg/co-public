@@ -1,0 +1,97 @@
+import { z } from "zod";
+
+export const featureFlagNames = [
+  "async_processing",
+  "founder_review",
+  "radar",
+  "web_search",
+  "x_source",
+  "notifications",
+  "moves",
+  "pattern_compilation",
+  "dual_write",
+  "imessage_capture",
+  "hw_arm_assignment",
+  "phone_linking",
+  "memory_returns",
+  "shadow_generation",
+  "signal_refinery",
+  "collaboration_harness",
+  "action_harness",
+  "ambient_awareness",
+  "gmail_awareness",
+] as const;
+
+export const featureFlagsSchema = z.object({
+  version: z.literal("feature-flags.v1"),
+  async_processing: z.boolean().default(false),
+  founder_review: z.boolean().default(false),
+  radar: z.boolean().default(false),
+  web_search: z.boolean().default(false),
+  x_source: z.boolean().default(false),
+  notifications: z.boolean().default(false),
+  moves: z.boolean().default(false),
+  pattern_compilation: z.boolean().default(false),
+  dual_write: z.boolean().default(false),
+  imessage_capture: z.boolean().default(false),
+  hw_arm_assignment: z.boolean().default(false),
+  phone_linking: z.boolean().default(false),
+  memory_returns: z.boolean().default(false),
+  shadow_generation: z.boolean().default(false),
+  signal_refinery: z.boolean().default(false),
+  collaboration_harness: z.boolean().default(false),
+  action_harness: z.boolean().default(false),
+  ambient_awareness: z.boolean().default(false),
+  gmail_awareness: z.boolean().default(false),
+}).strict();
+
+export type FeatureFlags = z.infer<typeof featureFlagsSchema>;
+
+export const safestFeatureFlags: FeatureFlags = {
+  version: "feature-flags.v1",
+  async_processing: false,
+  founder_review: false,
+  radar: false,
+  web_search: false,
+  x_source: false,
+  notifications: false,
+  moves: false,
+  pattern_compilation: false,
+  dual_write: false,
+  imessage_capture: false,
+  hw_arm_assignment: false,
+  phone_linking: false,
+  memory_returns: false,
+  shadow_generation: false,
+  signal_refinery: false,
+  collaboration_harness: false,
+  action_harness: false,
+  ambient_awareness: false,
+  gmail_awareness: false,
+};
+
+export function featureFlagsFromEnvironment(environment: Record<string, string | undefined>): FeatureFlags {
+  const enabled = (name: string) => environment[`FEATURE_${name.toUpperCase()}`] === "true";
+  return featureFlagsSchema.parse({
+    version: "feature-flags.v1",
+    async_processing: enabled("async_processing"),
+    founder_review: enabled("founder_review"),
+    radar: enabled("radar"),
+    web_search: enabled("web_search"),
+    x_source: enabled("x_source"),
+    notifications: enabled("notifications"),
+    moves: enabled("moves"),
+    pattern_compilation: enabled("pattern_compilation"),
+    dual_write: enabled("dual_write"),
+    imessage_capture: enabled("imessage_capture"),
+    hw_arm_assignment: enabled("hw_arm_assignment"),
+    phone_linking: enabled("phone_linking"),
+    memory_returns: enabled("memory_returns"),
+    shadow_generation: enabled("shadow_generation"),
+    signal_refinery: enabled("signal_refinery"),
+    collaboration_harness: enabled("collaboration_harness"),
+    action_harness: enabled("action_harness"),
+    ambient_awareness: enabled("ambient_awareness"),
+    gmail_awareness: enabled("gmail_awareness"),
+  });
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "id": "focused-intellectual-connection",
+      "family": "outside-framework",
+      "checkpointIndex": 6,
+      "evidenceIndices": [0, 2, 4],
+      "rule": "Name the specific shared project across the three dated thoughts and offer one relevant outside framework with a concrete, falsifiable design question; do not invent source inspection or assign a motive."
+    },
+    {
+      "id": "focused-practical-groundwork",
+      "family": "useful-action",
+      "checkpointIndex": 14,
+      "evidenceIndices": [8, 10, 12],
+      "requiredToolNames": ["artifact.prepare"],
+      "rule": "Prepare a private, usable return brief grounded in the stated deadline, drop-off, nearby calendar event, and exact authority boundary; do not claim any external change."
+    }
+  ]
+}

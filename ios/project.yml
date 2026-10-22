@@ -1,0 +1,106 @@
+name: Co
+
+options:
+  bundleIdPrefix: app.kyo
+  deploymentTarget:
+    iOS: "26.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    DEVELOPMENT_TEAM: XD4NAH432H
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: 1
+
+packages:
+  Supabase:
+    url: https://github.com/supabase/supabase-swift
+    from: 2.0.0
+  LiveKit:
+    url: https://github.com/livekit/client-sdk-swift
+    from: 2.0.0
+  ProgressiveBlurHeader:
+    url: https://github.com/dominikmartn/ProgressiveBlurHeader
+    branch: main
+
+targets:
+  Co:
+    type: application
+    platform: iOS
+    configFiles:
+      Debug: Config/Runtime.xcconfig
+      Release: Config/Runtime.xcconfig
+    settings:
+      base:
+        # Justin's shell is an iPhone portrait product. Declaring that explicitly avoids
+        # shipping an accidental iPad target that fails orientation validation.
+        TARGETED_DEVICE_FAMILY: "1"
+        # App identity predates the Co rename. The bundle id has to be the one the
+        # App Store Connect record was created against, or TestFlight upload fails
+        # with missingApp; that record is "Kyo App" — app.kyo.app.
+        PRODUCT_BUNDLE_IDENTIFIER: app.kyo.app
+    sources:
+      - Co/Co
+    dependencies:
+      - package: Supabase
+      - package: LiveKit
+      - package: ProgressiveBlurHeader
+    info:
+      path: Co/Co/Info.plist
+      properties:
+        CFBundleDisplayName: co
+        # xcodegen bakes its own literal build number into the plist, which made
+        # testflight.sh's per-archive BUILD_NUMBER a no-op and would collide on the
+        # second upload. Defer to the build setting the way the runtime values do.
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CoAPIBaseURL: $(CO_API_BASE_URL)
+        CoSupabaseURL: $(CO_SUPABASE_URL)
+        CoSupabasePublishableKey: $(CO_SUPABASE_PUBLISHABLE_KEY)
+        CFBundleURLTypes:
+          - CFBundleTypeRole: Editor
+            CFBundleURLName: app.kyo.Kyo.relationship
+            CFBundleURLSchemes: [kyo]
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        # Voice mode is a live call: the mic and the agent's audio have to survive the
+        # screen locking or a switch to another app mid-sentence.
+        UIBackgroundModes: [audio]
+        ITSAppUsesNonExemptEncryption: false
+        NSMicrophoneUsageDescription: co uses the mic when you record a voice message.
+        NSCameraUsageDescription: co opens the camera when you attach a photo to a chat.
+        NSSpeechRecognitionUsageDescription: co transcribes your voice messages so you can send them as text.
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+        UIAppFonts:
+          - EBGaramond-Regular.ttf
+          - EBGaramond-Medium.ttf
+          - NunitoSans-Bold.ttf
+          - Inter-Regular.ttf
+          - Inter-Medium.ttf
+          - Inter-SemiBold.ttf
+          - Inter-Bold.ttf
+
+  CoTests:
+    type: bundle.unit-test
+    platform: iOS
+    configFiles:
+      Debug: Config/Runtime.xcconfig
+      Release: Config/Runtime.xcconfig
+    sources: [Co/CoTests]
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: Co
+
+schemes:
+  Co:
+    build:
+      targets: { Co: all, CoTests: [test] }
+    test:
+      targets: [CoTests]
+    run:
+      config: Debug

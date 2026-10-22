@@ -1,0 +1,94 @@
+{
+ "entries": [
+  {
+   "id": "backup",
+   "kind": "recurring",
+   "time": "03:10",
+   "days": "daily",
+   "tz": "America/Los_Angeles",
+   "cmd": "/bin/bash /Users/main/Projects/Secretary/Secretary-Production/projects/co/frame/backup.sh >> ~/.co/backup.log 2>&1",
+   "timeout_s": 5400,
+   "status": "active"
+  },
+  {
+   "id": "ingest_sweep",
+   "kind": "recurring",
+   "time": "03:30",
+   "days": "daily",
+   "tz": "America/Los_Angeles",
+   "cmd": "cd /Users/main/Projects/Secretary/Secretary-Production/projects/co/frame/claims && set -a && . ../.env && set +a && /Users/main/Projects/Secretary/Secretary-Production/projects/substrate/.venv/bin/python3 predict.py --auto-resolve >> ~/.co/ingest_sweep.log 2>&1; cd /Users/main/Projects/Secretary/Secretary-Production/projects/co/frame/claims && for db in claims.db claims_p1*.db; do case \"$db\" in *p1555*|*.co_memory.db) continue;; esac; [ -f \"$db\" ] && CO_CLAIMS_DB=/Users/main/Projects/Secretary/Secretary-Production/projects/co/frame/claims/$db /Users/main/Projects/Secretary/Secretary-Production/projects/substrate/.venv/bin/python3 journal_ingest.py >> ~/.co/ingest_sweep.log 2>&1 && CO_CLAIMS_DB=/Users/main/Projects/Secretary/Secretary-Production/projects/co/frame/claims/$db /Users/main/Projects/Secretary/Secretary-Production/projects/substrate/.venv/bin/python3 ledger.py >> ~/.co/ingest_sweep.log 2>&1 && CO_CLAIMS_DB=/Users/main/Projects/Secretary/Secretary-Production/projects/co/frame/claims/$db /Users/main/Projects/Secretary/Secretary-Production/projects/substrate/.venv/bin/python3 salience.py >> ~/.co/ingest_sweep.log 2>&1 && CO_CLAIMS_DB=/Users/main/Projects/Secretary/Secretary-Production/projects/co/frame/claims/$db /Users/main/Projects/Secretary/Secretary-Production/projects/substrate/.venv/bin/python3 harvest.py >> ~/.co/ingest_sweep.log 2>&1; done",
+   "timeout_s": 3600,
+   "status": "active"
+  },
+  {
+   "id": "weave",
+   "kind": "recurring",
+   "time": "04:15",
+   "days": "daily",
+   "tz": "America/Los_Angeles",
+   "cmd": "cd /Users/main/Projects/Secretary/Secretary-Production/projects/co/frame/claims && set -a && . ../.env && set +a && /Users/main/Projects/Secretary/Secretary-Production/projects/substrate/.venv/bin/python3 weave.py >> ~/.co/weave.log 2>&1",
+   "timeout_s": 3600,
+   "status": "active"
+  },
+  {
+   "id": "scout",
+   "kind": "recurring",
+   "time": "04:45",
+   "days": "daily",
+   "tz": "America/Los_Angeles",
+   "cmd": "cd /Users/main/Projects/Secretary/Secretary-Production/projects/co/frame/claims && set -a && . ../.env && set +a && /Users/main/Projects/Secretary/Secretary-Production/projects/substrate/.venv/bin/python3 watch_engine.py --scout >> ~/.co/scout.log 2>&1",
+   "timeout_s": 1800,
+   "status": "active"
+  },
+  {
+   "id": "thumbs",
+   "kind": "recurring",
+   "time": "05:10",
+   "days": "daily",
+   "tz": "America/Los_Angeles",
+   "cmd": "cd /Users/main/Projects/Secretary/Secretary-Production/projects/co/frame/claims && set -a && . ../.env && set +a && /Users/main/Projects/Secretary/Secretary-Production/projects/co/frame/homebase/router/.venv/bin/python3 -c \"import sys; sys.path.insert(0,'.'); import thumbs, daily_text as DT; [print(DT._tenant_of_db(x), thumbs.warm(DT._tenant_of_db(x))) for x in DT.active_tenants()]\" >> ~/.co/thumbs.log 2>&1",
+   "timeout_s": 1800,
+   "status": "active"
+  },
+  {
+   "id": "daily_prep",
+   "kind": "recurring",
+   "time": "05:40",
+   "days": "daily",
+   "tz": "America/Los_Angeles",
+   "cmd": "cd /Users/main/Projects/Secretary/Secretary-Production/projects/co/frame/claims && set -a && . ../.env && set +a && /Users/main/Projects/Secretary/Secretary-Production/projects/co/frame/homebase/router/.venv/bin/python3 -c \"import sys; sys.path.insert(0,'.'); import wrapped, daily_text as DT; [wrapped._today(DT._tenant_of_db(x), block=True) for x in DT.active_tenants()]; print('prep ready')\" >> ~/.co/daily_prep.log 2>&1",
+   "timeout_s": 900,
+   "status": "active"
+  },
+  {
+   "id": "wake",
+   "kind": "recurring",
+   "time": "08:30",
+   "days": "daily",
+   "tz": "America/Los_Angeles",
+   "cmd": "cd /Users/main/Projects/Secretary/Secretary-Production/projects/co/frame/claims && set -a && . ../.env && set +a && /Users/main/Projects/Secretary/Secretary-Production/projects/co/frame/homebase/router/.venv/bin/python3 wake.py --send >> ~/.co/wake.log 2>&1",
+   "timeout_s": 900,
+   "status": "active"
+  },
+  {
+   "id": "canon_ingest",
+   "kind": "recurring",
+   "time": "05:20",
+   "days": "daily",
+   "tz": "America/Los_Angeles",
+   "cmd": "cd /Users/main/Projects/Secretary/Secretary-Production/projects/co/frame/claims && set -a && . ../.env && set +a && ../homebase/router/.venv/bin/python3 canon_ingest.py --write >> ~/.co/canon_ingest.log 2>&1",
+   "timeout_s": 2700,
+   "status": "active"
+  },
+  {
+   "id": "muse_expand",
+   "kind": "recurring",
+   "time": "04:45",
+   "days": "daily",
+   "tz": "America/Los_Angeles",
+   "cmd": "cd /Users/main/Projects/Secretary/Secretary-Production/projects/co/frame/claims && set -a && . ../.env && set +a && /Users/main/Projects/Secretary/Secretary-Production/projects/substrate/.venv/bin/python3 -c \"import muse, daily_text; [print(t, muse.expand(t)) for t in {daily_text._tenant_of_db(p) for p in daily_text.all_tenant_dbs(include_test=False)}]\" >> ~/.co/muse.log 2>&1",
+   "timeout_s": 900,
+   "status": "active"
+  }
+ ]
+}

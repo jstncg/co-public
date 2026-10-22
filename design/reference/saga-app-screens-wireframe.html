@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/saga-design-system-7ca38392-d535-4f87-ba47-493f329a9ef1/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/saga-design-system-7ca38392-d535-4f87-ba47-493f329a9ef1/tokens/colors.css">
+<link rel="stylesheet" href="_ds/saga-design-system-7ca38392-d535-4f87-ba47-493f329a9ef1/tokens/typography.css">
+<link rel="stylesheet" href="_ds/saga-design-system-7ca38392-d535-4f87-ba47-493f329a9ef1/tokens/layout.css">
+<link rel="stylesheet" href="_ds/saga-design-system-7ca38392-d535-4f87-ba47-493f329a9ef1/styles.css">
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.js"></script>
+<script src="image-slot.js"></script>
+<script src="_ds/saga-design-system-7ca38392-d535-4f87-ba47-493f329a9ef1/_ds_bundle.js"></script>
+<style>
+body{margin:0;background:#f0eee9;font-family:var(--font-sans,-apple-system,sans-serif)}
+a{color:var(--ink-900,#1C1C1E)}a:hover{color:#000}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 -apple-system,sans-serif;color:#1a1a1a}
+.dv-note{font:400 12px/1.5 -apple-system,sans-serif;color:rgba(0,0,0,.55);max-width:760px;margin:0 0 24px}
+.dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11.5px/1.3 -apple-system,sans-serif;color:rgba(0,0,0,.55)}
+.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}
+.dv-next{margin:26px 0 0;font:12px/1.5 -apple-system,sans-serif;color:rgba(0,0,0,.5)}
+@keyframes sagaGlow{0%,100%{opacity:.45}50%{opacity:1}}
+</style>
+</helmet>
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Saga — app screens (home camera, daily review, memories)</span></div>
+<p class="dv-note">Navigation is chrome, not a bar: a camera circle sits top-left, the Memories book circle sits top-right (ink-filled while you're in Memories), and the bottom holds the input cluster from your reference — a "+" on the left, the voice pill in the middle (the default), and a keyboard toggle on the right. On Home and the chat, tapping the keyboard switches to text; the mic in the text bar switches back to voice. The "ready to save" glow uses the system's quiet status green; every photo is a droppable placeholder. All phones are live: send in <a class="dv-oid" href="#1b">1b</a>, answer and swipe cards in <a class="dv-oid" href="#1d">1d</a>/<a class="dv-oid" href="#1e">1e</a>, switch timeline zoom in <a class="dv-oid" href="#1g">1g</a>.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a" data-screen-label="1a Home idle">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Home — idle camera, voice-default input (tap the keyboard to type)</div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="{{ 402 }}" height="{{ 874 }}" dark="{{ true }}" hint-size="402px,874px">
+  <div style="height:100%;position:relative;background:#141416;overflow:hidden">
+    <div style="position:absolute;inset:0"><image-slot id="camera-feed" shape="rect" placeholder="Live camera — drop a photo"></image-slot></div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(0,0,0,.30),transparent 18%,transparent 68%,rgba(0,0,0,.40))"></div>
+    <button title="Home" onClick="{{ noop }}" style="position:absolute;top:58px;left:16px;z-index:16;width:46px;height:46px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(28,28,30,.46);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:21px;height:21px"><i data-lucide="house"></i></span></button>
+    <button title="Memories" onClick="{{ noop }}" style="position:absolute;top:58px;right:16px;z-index:16;width:46px;height:46px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(28,28,30,.46);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:22px;height:22px"><i data-lucide="book-open"></i></span></button>
+    <div style="position:absolute;left:50%;bottom:114px;transform:translateX(-50%);z-index:12">
+      <button title="Capture" style="width:72px;height:72px;border-radius:999px;border:4px solid rgba(255,255,255,.95);background:rgba(255,255,255,.18);cursor:pointer;padding:4px;display:flex"><span style="flex:1;border-radius:999px;background:#fff"></span></button>
+    </div>
+    <sc-if value="{{ notKbA }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;left:0;right:0;bottom:30px;z-index:16;display:flex;align-items:center;justify-content:center;gap:34px">
+        <button title="Add" onClick="{{ noop }}" style="width:56px;height:56px;border-radius:999px;border:none;background:var(--surface);box-shadow:var(--shadow-lg);color:var(--ink-900);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:24px;height:24px"><i data-lucide="plus"></i></span></button>
+        <button title="Hold to talk" onClick="{{ noop }}" style="width:132px;height:56px;border-radius:999px;border:none;background:var(--ink-900);box-shadow:var(--shadow-lg);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:24px;height:24px"><i data-lucide="mic"></i></span></button>
+        <button title="Type instead" onClick="{{ setKbA }}" style="width:56px;height:56px;border-radius:999px;border:none;background:var(--surface);box-shadow:var(--shadow-lg);color:var(--ink-900);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:22px;height:22px"><i data-lucide="keyboard"></i></span></button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ kbA }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;left:0;right:0;bottom:0;z-index:16;display:flex;align-items:flex-end;gap:8px;padding:12px 14px 30px;background:var(--paper)">
+        <div style="flex:1;display:flex;align-items:flex-end;gap:2px;background:var(--surface-sunken);border-radius:22px;padding:5px 5px 5px 16px">
+          <textarea rows="1" value="{{ draftA }}" onChange="{{ onDraftA }}" onKeyDown="{{ onKeyA }}" placeholder="Tell Saga about your day…" style="flex:1;border:none;outline:none;background:transparent;resize:none;font-family:var(--font-sans);font-size:15.5px;color:var(--ink-900);padding:9px 0;line-height:1.35;max-height:96px"></textarea>
+          <button title="Back to voice" onClick="{{ voiceA }}" style="width:38px;height:38px;flex:none;border-radius:999px;border:none;background:transparent;color:var(--ink-500);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:20px;height:20px"><i data-lucide="mic"></i></span></button>
+          <button title="Send" onClick="{{ sendA }}" style="width:38px;height:38px;flex:none;border-radius:999px;border:none;background:var(--ink-900);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:19px;height:19px"><i data-lucide="arrow-up"></i></span></button>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+</x-import>
+</div>
+
+<div class="dv-opt" id="1b" data-screen-label="1b Home chat">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Home — chat mid-conversation (voice bubble + Saga options-bubble; tap the keyboard, then send)</div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="{{ 402 }}" height="{{ 874 }}" hint-size="402px,874px">
+  <div style="height:100%;display:flex;flex-direction:column;background:var(--paper);position:relative">
+    <button title="Camera" onClick="{{ noop }}" style="position:absolute;top:58px;left:16px;z-index:16;width:46px;height:46px;border-radius:999px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow-md);color:var(--ink-700);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:20px;height:20px"><i data-lucide="camera"></i></span></button>
+    <button title="Memories" onClick="{{ noop }}" style="position:absolute;top:58px;right:16px;z-index:16;width:46px;height:46px;border-radius:999px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow-md);color:var(--ink-900);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:22px;height:22px"><i data-lucide="book-open"></i></span></button>
+    <div ref="{{ threadRef }}" style="flex:1;overflow-y:auto;padding:112px 16px 130px;display:flex;flex-direction:column;gap:10px">
+      <div style="text-align:center;font-family:var(--font-sans);font-size:12px;color:var(--ink-400);margin:2px 0 6px">Today 9:12 PM</div>
+      <sc-for list="{{ msgs }}" as="m" hint-placeholder-count="4">
+        <sc-if value="{{ m.isText }}" hint-placeholder-val="{{ true }}">
+          <div style="align-self:{{ m.align }};max-width:78%;padding:11px 15px;border-radius:{{ m.radius }};background:{{ m.bg }};color:{{ m.color }};border:{{ m.border }};box-shadow:{{ m.shadow }};font-family:var(--font-sans);font-size:15.5px;line-height:1.4">{{ m.text }}</div>
+        </sc-if>
+        <sc-if value="{{ m.isVoice }}" hint-placeholder-val="{{ false }}">
+          <div style="align-self:flex-end;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:20px 20px 6px 20px;background:var(--ink-900)">
+            <span style="display:inline-flex;width:28px;height:28px;flex:none;align-items:center;justify-content:center;border-radius:999px;background:rgba(255,255,255,.16);color:#fff"><span style="display:inline-flex;width:13px;height:13px;margin-left:2px"><i data-lucide="play"></i></span></span>
+            <span style="display:flex;align-items:center;gap:2.5px;height:28px">
+              <sc-for list="{{ voiceBars }}" as="b" hint-placeholder-count="12"><span style="width:3px;height:{{ b }}px;border-radius:2px;background:rgba(255,255,255,.85)"></span></sc-for>
+            </span>
+            <span style="font-family:var(--font-sans);font-size:12.5px;color:rgba(255,255,255,.7)">0:42</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ m.isOpts }}" hint-placeholder-val="{{ false }}">
+          <div style="align-self:flex-start;width:78%;background:var(--surface);border:1px solid var(--line);border-radius:20px 20px 20px 6px;padding:8px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--shadow-sm)">
+            <sc-for list="{{ m.opts }}" as="o" hint-placeholder-count="3">
+              <button onClick="{{ o.onTap }}" style="min-height:44px;text-align:left;padding:11px 14px;border:none;border-radius:14px;background:{{ o.bg }};color:{{ o.color }};font-family:var(--font-sans);font-size:15px;font-weight:550;cursor:pointer">{{ o.label }}</button>
+            </sc-for>
+          </div>
+        </sc-if>
+      </sc-for>
+    </div>
+    <sc-if value="{{ notKbB }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;left:0;right:0;bottom:30px;z-index:16;display:flex;align-items:center;justify-content:center;gap:34px">
+        <button title="Add" onClick="{{ noop }}" style="width:56px;height:56px;border-radius:999px;border:none;background:var(--surface);box-shadow:var(--shadow-lg);color:var(--ink-900);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:24px;height:24px"><i data-lucide="plus"></i></span></button>
+        <button title="Hold to talk" onClick="{{ noop }}" style="width:132px;height:56px;border-radius:999px;border:none;background:var(--ink-900);box-shadow:var(--shadow-lg);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:24px;height:24px"><i data-lucide="mic"></i></span></button>
+        <button title="Type instead" onClick="{{ setKbB }}" style="width:56px;height:56px;border-radius:999px;border:none;background:var(--surface);box-shadow:var(--shadow-lg);color:var(--ink-900);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:22px;height:22px"><i data-lucide="keyboard"></i></span></button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ kbB }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;left:0;right:0;bottom:0;z-index:16;display:flex;align-items:flex-end;gap:8px;padding:10px 14px 30px;background:var(--paper);border-top:1px solid var(--line)">
+        <div style="flex:1;display:flex;align-items:flex-end;gap:2px;background:var(--surface-sunken);border-radius:22px;padding:5px 5px 5px 16px">
+          <textarea rows="1" value="{{ draftB }}" onChange="{{ onDraftB }}" onKeyDown="{{ onKeyB }}" placeholder="Tell Saga…" style="flex:1;border:none;outline:none;background:transparent;resize:none;font-family:var(--font-sans);font-size:15.5px;color:var(--ink-900);padding:9px 0;line-height:1.35;max-height:96px"></textarea>
+          <button title="Back to voice" onClick="{{ voiceB }}" style="width:38px;height:38px;flex:none;border-radius:999px;border:none;background:transparent;color:var(--ink-500);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:20px;height:20px"><i data-lucide="mic"></i></span></button>
+          <button title="Send" onClick="{{ sendB }}" style="width:38px;height:38px;flex:none;border-radius:999px;border:none;background:var(--ink-900);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:19px;height:19px"><i data-lucide="arrow-up"></i></span></button>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+</x-import>
+</div>
+
+<div class="dv-opt" id="1c" data-screen-label="1c Daily review notification">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Daily review — push notification (taps into <a class="dv-oid" href="#1d">1d</a>)</div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="{{ 402 }}" height="{{ 874 }}" dark="{{ true }}" hint-size="402px,874px">
+  <div style="height:100%;position:relative;background:radial-gradient(130% 90% at 25% 8%,#3A3A3C,#1C1C1E 58%,#0A0A0B);color:#fff">
+    <div style="text-align:center;padding-top:88px;font-family:var(--font-sans);font-weight:590;font-size:17px;color:rgba(255,255,255,.85)">Tuesday, July 14</div>
+    <div style="text-align:center;font-family:var(--font-sans);font-weight:640;font-size:86px;line-height:1.02;letter-spacing:-2px;color:rgba(255,255,255,.95)">9:41</div>
+    <div style="margin:42px 14px 0;padding:13px 14px;border-radius:24px;background:rgba(245,245,247,.14);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:0.5px solid rgba(255,255,255,.14);display:flex;gap:12px;align-items:center;box-shadow:var(--shadow-lg)">
+      <span style="width:40px;height:40px;flex:none;border-radius:11px;background:#FFFCFF;color:#1C1C1E;display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:23px">S</span>
+      <span style="flex:1;display:flex;flex-direction:column;gap:1px;min-width:0">
+        <span style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+          <span style="font-family:var(--font-sans);font-weight:640;font-size:15px">Saga</span>
+          <span style="font-family:var(--font-sans);font-size:12.5px;color:rgba(255,255,255,.55)">now</span>
+        </span>
+        <span style="font-family:var(--font-sans);font-size:15px;line-height:1.35;color:rgba(255,255,255,.92)">{{ notifBody }}</span>
+        <span style="font-family:var(--font-sans);font-size:12.5px;color:rgba(255,255,255,.55);margin-top:1px">Two minutes, tops.</span>
+      </span>
+    </div>
+    <div style="position:absolute;bottom:92px;left:0;right:0;display:flex;justify-content:space-between;padding:0 54px">
+      <span style="width:50px;height:50px;border-radius:999px;background:rgba(245,245,247,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:inline-flex;align-items:center;justify-content:center;color:#fff"><span style="display:inline-flex;width:22px;height:22px"><i data-lucide="flashlight"></i></span></span>
+      <span style="width:50px;height:50px;border-radius:999px;background:rgba(245,245,247,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:inline-flex;align-items:center;justify-content:center;color:#fff"><span style="display:inline-flex;width:22px;height:22px"><i data-lucide="camera"></i></span></span>
+    </div>
+  </div>
+</x-import>
+</div>
+
+<div class="dv-opt" id="1d" data-screen-label="1d Life swipe card mid-flow">
+<div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Life — swipe card mid-flow (tap answers; drag the photo left / right)</div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="{{ 402 }}" height="{{ 874 }}" hint-size="402px,874px">
+  <div style="height:100%;display:flex;flex-direction:column;background:var(--paper);position:relative;overflow:hidden">
+    <button title="Camera" onClick="{{ noop }}" style="position:absolute;top:58px;left:16px;z-index:34;width:46px;height:46px;border-radius:999px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow-md);color:var(--ink-700);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:20px;height:20px"><i data-lucide="camera"></i></span></button>
+    <button title="Memories" onClick="{{ noop }}" style="position:absolute;top:58px;right:16px;z-index:34;width:46px;height:46px;border-radius:999px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow-md);color:var(--ink-900);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:22px;height:22px"><i data-lucide="book-open"></i></span></button>
+    <div style="padding:112px 22px 0">
+      <div style="font-family:var(--font-sans);font-size:13px;font-weight:600;color:var(--ink-500)">Daily review</div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-top:2px">
+        <span style="font-family:var(--font-serif);font-size:31px;letter-spacing:-0.01em;color:var(--ink-900)">Today</span>
+        <span style="font-family:var(--font-sans);font-size:14px;color:var(--ink-500)">{{ dv.progress }}</span>
+      </div>
+    </div>
+    <div style="flex:1;position:relative;margin:16px 18px 0;min-height:0">
+      <div style="position:absolute;inset:0;transform:translateY(16px) scale(0.94);opacity:0.65;z-index:5">
+        <div style="height:100%;background:var(--surface);border-radius:20px;border:1px solid var(--line);box-shadow:var(--shadow-sm);overflow:hidden">
+          <div style="height:58%;background:var(--surface-sunken)"></div>
+        </div>
+      </div>
+      <div style="position:absolute;inset:0;z-index:10;transform:{{ dv.tf }};transition:{{ dv.tr }}">
+        <div style="height:100%;display:flex;flex-direction:column;background:var(--surface);border-radius:20px;border:1px solid var(--line);box-shadow:var(--shadow-md);overflow:hidden">
+          <div onPointerDown="{{ dv.onDown }}" onPointerMove="{{ dv.onMove }}" onPointerUp="{{ dv.onUp }}" onPointerCancel="{{ dv.onUp }}" style="flex:1.35;min-height:0;position:relative;background:var(--surface-sunken);touch-action:none;cursor:grab">
+            <image-slot id="{{ dv.slot }}" shape="rect" placeholder="{{ dv.ph }}"></image-slot>
+            <div style="position:absolute;top:12px;left:12px;padding:5px 11px;border-radius:999px;background:rgba(28,28,30,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;font-family:var(--font-sans);font-size:12px;pointer-events:none">{{ dv.time }}</div>
+            <sc-if value="{{ dv.lock }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:7px;padding:8px 14px;border-radius:999px;background:rgba(28,28,30,.6);backdrop-filter:blur(6px);color:#fff;font-family:var(--font-sans);font-size:13px;white-space:nowrap;pointer-events:none"><span style="display:inline-flex;width:14px;height:14px"><i data-lucide="lock"></i></span>Answer first — then you can save</div>
+            </sc-if>
+          </div>
+          <div style="flex:none;padding:16px 18px 18px;opacity:{{ dv.qOp }};transform:{{ dv.qTf }};transition:opacity 220ms var(--ease-standard),transform 220ms var(--ease-standard)">
+            <sc-if value="{{ dv.notAnswered }}" hint-placeholder-val="{{ true }}">
+              <div style="font-family:var(--font-sans);font-size:12.5px;color:var(--ink-400)">{{ dv.qMeta }}</div>
+              <div style="font-family:var(--font-serif);font-size:21px;line-height:1.22;letter-spacing:-0.01em;color:var(--ink-900);margin-top:5px;text-wrap:pretty">{{ dv.qText }}</div>
+            </sc-if>
+            <sc-if value="{{ dv.showOpts }}" hint-placeholder-val="{{ true }}">
+              <div style="display:grid;grid-template-columns:{{ dv.cols }};gap:8px;margin-top:14px">
+                <sc-for list="{{ dv.opts }}" as="o" hint-placeholder-count="4">
+                  <button onClick="{{ o.onTap }}" style="min-height:44px;padding:11px 8px;border-radius:var(--radius-md);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.color }};font-family:var(--font-sans);font-size:14.5px;font-weight:550;cursor:pointer">{{ o.label }}</button>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ dv.showOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;gap:8px;margin-top:14px">
+                <input value="{{ dv.openVal }}" onChange="{{ dv.onOpenChange }}" onKeyDown="{{ dv.onOpenKey }}" placeholder="Type it here…" style="flex:1;min-width:0;border:1px solid var(--line);border-radius:var(--radius-md);background:var(--surface-sunken);padding:12px 14px;font-family:var(--font-sans);font-size:15px;color:var(--ink-900);outline:none">
+                <button onClick="{{ dv.onOpenSubmit }}" style="width:46px;height:46px;flex:none;border-radius:var(--radius-md);border:none;background:var(--ink-900);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:19px;height:19px"><i data-lucide="arrow-up"></i></span></button>
+              </div>
+            </sc-if>
+            <sc-if value="{{ dv.answered }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="width:30px;height:30px;flex:none;border-radius:999px;background:var(--success-100);color:var(--success-500);display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-flex;width:16px;height:16px"><i data-lucide="check"></i></span></span>
+                <span style="font-family:var(--font-serif);font-size:21px;letter-spacing:-0.01em;color:var(--ink-900)">All set.</span>
+              </div>
+              <div style="font-family:var(--font-sans);font-size:14px;color:var(--ink-500);margin-top:6px">Swipe right to keep this memory.</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px">
+                <sc-for list="{{ dv.answers }}" as="a" hint-placeholder-count="3"><span style="padding:7px 12px;border-radius:999px;background:var(--surface-sunken);font-family:var(--font-sans);font-size:13px;color:var(--ink-700)">{{ a }}</span></sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="flex:none;text-align:center;padding:12px 0 96px;font-family:var(--font-sans);font-size:13px;color:var(--ink-400)">{{ dv.hint }}</div>
+    <sc-if value="{{ dv.answered }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;top:0;right:0;bottom:0;width:76px;z-index:26;pointer-events:none;background:{{ dv.glow }};animation:sagaGlow 1.8s var(--ease-standard) infinite"></div>
+    </sc-if>
+    <div style="position:absolute;left:0;right:0;bottom:30px;z-index:34;display:flex;align-items:center;justify-content:center;gap:34px">
+      <button title="Add" onClick="{{ noop }}" style="width:56px;height:56px;border-radius:999px;border:none;background:var(--surface);box-shadow:var(--shadow-lg);color:var(--ink-900);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:24px;height:24px"><i data-lucide="plus"></i></span></button>
+      <button title="Hold to talk" onClick="{{ noop }}" style="width:132px;height:56px;border-radius:999px;border:none;background:var(--ink-900);box-shadow:var(--shadow-lg);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:24px;height:24px"><i data-lucide="mic"></i></span></button>
+      <button title="Keyboard" onClick="{{ noop }}" style="width:56px;height:56px;border-radius:999px;border:none;background:var(--surface);box-shadow:var(--shadow-lg);color:var(--ink-900);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:22px;height:22px"><i data-lucide="keyboard"></i></span></button>
+    </div>
+  </div>
+</x-import>
+</div>
+
+<div class="dv-opt" id="1e" data-screen-label="1e Life card ready to save">
+<div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a>Life — fully answered, right-edge glow (drag the photo right to save)</div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="{{ 402 }}" height="{{ 874 }}" hint-size="402px,874px">
+  <div style="height:100%;display:flex;flex-direction:column;background:var(--paper);position:relative;overflow:hidden">
+    <button title="Camera" onClick="{{ noop }}" style="position:absolute;top:58px;left:16px;z-index:34;width:46px;height:46px;border-radius:999px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow-md);color:var(--ink-700);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:20px;height:20px"><i data-lucide="camera"></i></span></button>
+    <button title="Memories" onClick="{{ noop }}" style="position:absolute;top:58px;right:16px;z-index:34;width:46px;height:46px;border-radius:999px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow-md);color:var(--ink-900);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:22px;height:22px"><i data-lucide="book-open"></i></span></button>
+    <div style="padding:112px 22px 0">
+      <div style="font-family:var(--font-sans);font-size:13px;font-weight:600;color:var(--ink-500)">Daily review</div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-top:2px">
+        <span style="font-family:var(--font-serif);font-size:31px;letter-spacing:-0.01em;color:var(--ink-900)">Today</span>
+        <span style="font-family:var(--font-sans);font-size:14px;color:var(--ink-500)">{{ ev.progress }}</span>
+      </div>
+    </div>
+    <div style="flex:1;position:relative;margin:16px 18px 0;min-height:0">
+      <div style="position:absolute;inset:0;transform:translateY(16px) scale(0.94);opacity:0.65;z-index:5">
+        <div style="height:100%;background:var(--surface);border-radius:20px;border:1px solid var(--line);box-shadow:var(--shadow-sm);overflow:hidden">
+          <div style="height:58%;background:var(--surface-sunken)"></div>
+        </div>
+      </div>
+      <div style="position:absolute;inset:0;z-index:10;transform:{{ ev.tf }};transition:{{ ev.tr }}">
+        <div style="height:100%;display:flex;flex-direction:column;background:var(--surface);border-radius:20px;border:1px solid var(--line);box-shadow:var(--shadow-md);overflow:hidden">
+          <div onPointerDown="{{ ev.onDown }}" onPointerMove="{{ ev.onMove }}" onPointerUp="{{ ev.onUp }}" onPointerCancel="{{ ev.onUp }}" style="flex:1.35;min-height:0;position:relative;background:var(--surface-sunken);touch-action:none;cursor:grab">
+            <image-slot id="{{ ev.slot }}" shape="rect" placeholder="{{ ev.ph }}"></image-slot>
+            <div style="position:absolute;top:12px;left:12px;padding:5px 11px;border-radius:999px;background:rgba(28,28,30,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;font-family:var(--font-sans);font-size:12px;pointer-events:none">{{ ev.time }}</div>
+          </div>
+          <div style="flex:none;padding:16px 18px 18px;opacity:{{ ev.qOp }};transform:{{ ev.qTf }};transition:opacity 220ms var(--ease-standard),transform 220ms var(--ease-standard)">
+            <sc-if value="{{ ev.notAnswered }}" hint-placeholder-val="{{ false }}">
+              <div style="font-family:var(--font-sans);font-size:12.5px;color:var(--ink-400)">{{ ev.qMeta }}</div>
+              <div style="font-family:var(--font-serif);font-size:21px;line-height:1.22;letter-spacing:-0.01em;color:var(--ink-900);margin-top:5px;text-wrap:pretty">{{ ev.qText }}</div>
+            </sc-if>
+            <sc-if value="{{ ev.showOpts }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid;grid-template-columns:{{ ev.cols }};gap:8px;margin-top:14px">
+                <sc-for list="{{ ev.opts }}" as="o" hint-placeholder-count="4">
+                  <button onClick="{{ o.onTap }}" style="min-height:44px;padding:11px 8px;border-radius:var(--radius-md);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.color }};font-family:var(--font-sans);font-size:14.5px;font-weight:550;cursor:pointer">{{ o.label }}</button>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ ev.showOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;gap:8px;margin-top:14px">
+                <input value="{{ ev.openVal }}" onChange="{{ ev.onOpenChange }}" onKeyDown="{{ ev.onOpenKey }}" placeholder="Type it here…" style="flex:1;min-width:0;border:1px solid var(--line);border-radius:var(--radius-md);background:var(--surface-sunken);padding:12px 14px;font-family:var(--font-sans);font-size:15px;color:var(--ink-900);outline:none">
+                <button onClick="{{ ev.onOpenSubmit }}" style="width:46px;height:46px;flex:none;border-radius:var(--radius-md);border:none;background:var(--ink-900);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:19px;height:19px"><i data-lucide="arrow-up"></i></span></button>
+              </div>
+            </sc-if>
+            <sc-if value="{{ ev.answered }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="width:30px;height:30px;flex:none;border-radius:999px;background:var(--success-100);color:var(--success-500);display:inline-flex;align-items:center;justify-content:center"><span style="display:inline-flex;width:16px;height:16px"><i data-lucide="check"></i></span></span>
+                <span style="font-family:var(--font-serif);font-size:21px;letter-spacing:-0.01em;color:var(--ink-900)">All set.</span>
+              </div>
+              <div style="font-family:var(--font-sans);font-size:14px;color:var(--ink-500);margin-top:6px">Swipe right to keep this memory.</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px">
+                <sc-for list="{{ ev.answers }}" as="a" hint-placeholder-count="3"><span style="padding:7px 12px;border-radius:999px;background:var(--surface-sunken);font-family:var(--font-sans);font-size:13px;color:var(--ink-700)">{{ a }}</span></sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="flex:none;text-align:center;padding:12px 0 96px;font-family:var(--font-sans);font-size:13px;color:var(--ink-400)">{{ ev.hint }}</div>
+    <sc-if value="{{ ev.answered }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;top:0;right:0;bottom:0;width:76px;z-index:26;pointer-events:none;background:{{ ev.glow }};animation:sagaGlow 1.8s var(--ease-standard) infinite"></div>
+    </sc-if>
+    <div style="position:absolute;left:0;right:0;bottom:30px;z-index:34;display:flex;align-items:center;justify-content:center;gap:34px">
+      <button title="Add" onClick="{{ noop }}" style="width:56px;height:56px;border-radius:999px;border:none;background:var(--surface);box-shadow:var(--shadow-lg);color:var(--ink-900);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:24px;height:24px"><i data-lucide="plus"></i></span></button>
+      <button title="Hold to talk" onClick="{{ noop }}" style="width:132px;height:56px;border-radius:999px;border:none;background:var(--ink-900);box-shadow:var(--shadow-lg);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:24px;height:24px"><i data-lucide="mic"></i></span></button>
+      <button title="Keyboard" onClick="{{ noop }}" style="width:56px;height:56px;border-radius:999px;border:none;background:var(--surface);box-shadow:var(--shadow-lg);color:var(--ink-900);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:22px;height:22px"><i data-lucide="keyboard"></i></span></button>
+    </div>
+  </div>
+</x-import>
+</div>
+
+<div class="dv-opt" id="1f" data-screen-label="1f Memories arc grid">
+<div class="dv-olabel"><a class="dv-oid" href="#1f">1f</a>Memories — arc grid, filter dropdown open</div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="{{ 402 }}" height="{{ 874 }}" hint-size="402px,874px">
+  <div style="height:100%;position:relative;background:var(--paper)">
+    <button title="Camera" onClick="{{ noop }}" style="position:absolute;top:58px;left:16px;z-index:34;width:46px;height:46px;border-radius:999px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow-md);color:var(--ink-700);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:20px;height:20px"><i data-lucide="camera"></i></span></button>
+    <button title="Memories" onClick="{{ noop }}" style="position:absolute;top:58px;right:16px;z-index:34;width:46px;height:46px;border-radius:999px;border:none;background:var(--ink-900);box-shadow:var(--shadow-md);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:22px;height:22px"><i data-lucide="book-open"></i></span></button>
+    <div style="position:absolute;inset:0;overflow-y:auto;padding:112px 20px 100px;box-sizing:border-box">
+      <div style="font-family:var(--font-sans);font-size:13px;font-weight:600;color:var(--ink-500)">12 arcs · since March</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:2px">
+        <span style="font-family:var(--font-serif);font-size:32px;letter-spacing:-0.01em;color:var(--ink-900)">Memories</span>
+        <button title="Sort" onClick="{{ toggleSort }}" style="width:42px;height:42px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink-700);box-shadow:var(--shadow-sm);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:19px;height:19px"><i data-lucide="arrow-up-down"></i></span></button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px 14px;margin-top:18px">
+        <sc-for list="{{ arcs }}" as="a" hint-placeholder-count="8">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="aspect-ratio:1;border-radius:var(--radius-md);overflow:hidden;position:relative;background:var(--surface-sunken);border:1px solid var(--line)"><image-slot id="{{ a.slot }}" shape="rect" placeholder="{{ a.ph }}"></image-slot></div>
+            <div>
+              <div style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--ink-900)">{{ a.title }}</div>
+              <div style="font-family:var(--font-sans);font-size:12.5px;color:var(--ink-500);margin-top:1px">{{ a.meta }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <sc-if value="{{ sortOpen }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;top:186px;right:20px;z-index:44;min-width:196px;background:var(--surface);border-radius:var(--radius-md);border:1px solid var(--line);box-shadow:var(--shadow-lg);padding:6px">
+        <sc-for list="{{ sortOpts }}" as="s" hint-placeholder-count="3">
+          <button onClick="{{ s.onTap }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:44px;padding:10px 12px;border:none;border-radius:12px;background:{{ s.bg }};color:var(--ink-900);font-family:var(--font-sans);font-size:15px;text-align:left;cursor:pointer">{{ s.label }}<sc-if value="{{ s.on }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;width:16px;height:16px;color:var(--ink-900)"><i data-lucide="check"></i></span></sc-if></button>
+        </sc-for>
+      </div>
+    </sc-if>
+    <div style="position:absolute;left:0;right:0;bottom:30px;z-index:34;display:flex;align-items:center;justify-content:center;gap:34px">
+      <button title="Add" onClick="{{ noop }}" style="width:56px;height:56px;border-radius:999px;border:none;background:var(--surface);box-shadow:var(--shadow-lg);color:var(--ink-900);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:24px;height:24px"><i data-lucide="plus"></i></span></button>
+      <button title="Hold to talk" onClick="{{ noop }}" style="width:132px;height:56px;border-radius:999px;border:none;background:var(--ink-900);box-shadow:var(--shadow-lg);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:24px;height:24px"><i data-lucide="mic"></i></span></button>
+      <button title="Keyboard" onClick="{{ noop }}" style="width:56px;height:56px;border-radius:999px;border:none;background:var(--surface);box-shadow:var(--shadow-lg);color:var(--ink-900);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:22px;height:22px"><i data-lucide="keyboard"></i></span></button>
+    </div>
+  </div>
+</x-import>
+</div>
+
+<div class="dv-opt" id="1g" data-screen-label="1g Memories arc detail timeline">
+<div class="dv-olabel"><a class="dv-oid" href="#1g">1g</a>Memories — arc detail, adaptive timeline (try Weeks / Months / Chapters)</div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="{{ 402 }}" height="{{ 874 }}" hint-size="402px,874px">
+  <div style="height:100%;position:relative;background:var(--paper)">
+    <button title="Camera" onClick="{{ noop }}" style="position:absolute;top:58px;left:16px;z-index:34;width:46px;height:46px;border-radius:999px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow-md);color:var(--ink-700);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:20px;height:20px"><i data-lucide="camera"></i></span></button>
+    <button title="Memories" onClick="{{ noop }}" style="position:absolute;top:58px;right:16px;z-index:34;width:46px;height:46px;border-radius:999px;border:none;background:var(--ink-900);box-shadow:var(--shadow-md);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:22px;height:22px"><i data-lucide="book-open"></i></span></button>
+    <div style="position:absolute;inset:0;overflow-y:auto;padding:112px 20px 100px;box-sizing:border-box">
+      <div style="display:flex;align-items:center;justify-content:flex-end">
+        <button title="Filter" onClick="{{ toggleGFilter }}" style="width:42px;height:42px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink-700);box-shadow:var(--shadow-sm);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:19px;height:19px"><i data-lucide="sliders-horizontal"></i></span></button>
+      </div>
+      <div style="height:158px;border-radius:20px;overflow:hidden;position:relative;background:var(--surface-sunken);border:1px solid var(--line);margin-top:12px">
+        <image-slot id="arc-cover-intern" shape="rect" placeholder="Arc cover — drop a photo"></image-slot>
+        <button title="Edit cover" style="position:absolute;bottom:10px;right:10px;width:36px;height:36px;border-radius:999px;border:none;background:rgba(255,255,255,.92);color:var(--ink-700);box-shadow:var(--shadow-sm);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:16px;height:16px"><i data-lucide="pencil"></i></span></button>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:14px">
+        <span style="font-family:var(--font-serif);font-size:29px;letter-spacing:-0.01em;color:var(--ink-900)">First internship</span>
+        <button title="Rename" onClick="{{ noop }}" style="width:32px;height:32px;border-radius:999px;border:none;background:transparent;color:var(--ink-400);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:15px;height:15px"><i data-lucide="pencil"></i></span></button>
+      </div>
+      <div style="font-family:var(--font-sans);font-size:13.5px;color:var(--ink-500);margin-top:2px">42 memories · May – August 2025</div>
+      <x-import component-from-global-scope="SagaDesignSystem_7ca383.SegmentedControl" options="{{ zoomOpts }}" value="{{ zoom }}" on-change="{{ setZoom }}" hint-size="100%,44px" style="display:block;margin-top:16px"></x-import>
+      <sc-for list="{{ gGroups }}" as="g" hint-placeholder-count="3">
+        <div style="margin-top:24px">
+          <div style="font-family:var(--font-serif);font-size:20px;letter-spacing:-0.01em;color:var(--ink-900)">{{ g.h }}</div>
+          <div style="font-family:var(--font-sans);font-size:12.5px;color:var(--ink-500);margin-top:1px">{{ g.s }}</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:10px">
+            <sc-for list="{{ g.tiles }}" as="t" hint-placeholder-count="3">
+              <div style="aspect-ratio:1;border-radius:12px;background:var(--surface-sunken);position:relative;overflow:hidden;border:1px solid var(--line)">
+                <sc-if value="{{ t.isSlot }}" hint-placeholder-val="{{ false }}"><image-slot id="{{ t.slot }}" shape="rect" placeholder="Photo"></image-slot></sc-if>
+                <sc-if value="{{ t.isTxt }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:var(--surface);padding:9px;font-family:var(--font-sans);font-size:10.5px;line-height:1.35;color:var(--ink-700);overflow:hidden">{{ t.text }}</div></sc-if>
+                <sc-if value="{{ t.isIcon }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--ink-300)"><span style="display:inline-flex;width:20px;height:20px"><i data-lucide="{{ t.icon }}"></i></span></div></sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ gOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;top:158px;right:20px;z-index:44;min-width:196px;background:var(--surface);border-radius:var(--radius-md);border:1px solid var(--line);box-shadow:var(--shadow-lg);padding:6px">
+        <sc-for list="{{ gOpts }}" as="s" hint-placeholder-count="5">
+          <button onClick="{{ s.onTap }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:44px;padding:10px 12px;border:none;border-radius:12px;background:{{ s.bg }};color:var(--ink-900);font-family:var(--font-sans);font-size:15px;text-align:left;cursor:pointer">{{ s.label }}<sc-if value="{{ s.on }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;width:16px;height:16px;color:var(--ink-900)"><i data-lucide="check"></i></span></sc-if></button>
+        </sc-for>
+      </div>
+    </sc-if>
+    <div style="position:absolute;left:0;right:0;bottom:30px;z-index:34;display:flex;align-items:center;justify-content:center;gap:34px">
+      <button title="Add" onClick="{{ noop }}" style="width:56px;height:56px;border-radius:999px;border:none;background:var(--surface);box-shadow:var(--shadow-lg);color:var(--ink-900);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:24px;height:24px"><i data-lucide="plus"></i></span></button>
+      <button title="Hold to talk" onClick="{{ noop }}" style="width:132px;height:56px;border-radius:999px;border:none;background:var(--ink-900);box-shadow:var(--shadow-lg);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:24px;height:24px"><i data-lucide="mic"></i></span></button>
+      <button title="Keyboard" onClick="{{ noop }}" style="width:56px;height:56px;border-radius:999px;border:none;background:var(--surface);box-shadow:var(--shadow-lg);color:var(--ink-900);display:inline-flex;align-items:center;justify-content:center;cursor:pointer"><span style="display:inline-flex;width:22px;height:22px"><i data-lucide="keyboard"></i></span></button>
+    </div>
+  </div>
+</x-import>
+</div>
+
+</div>
+<p class="dv-next">Try next: "let the + button open a quick capture sheet" · "give <a class="dv-oid" href="#1f">1f</a> title-on-image covers instead" · "add the arc-assignment step after saving a card in <a class="dv-oid" href="#1e">1e</a>"</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;memoriesToday&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:8,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:1,&quot;max&quot;:24,&quot;section&quot;:&quot;Daily review&quot;},&quot;saveGlow&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;green whisper&quot;,&quot;options&quot;:[&quot;green whisper&quot;,&quot;ink&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Daily review&quot;}}">
+class Component extends DCLogic {
+  threadRef = React.createRef();
+  BARS = [8,14,20,11,16,22,9,18,13,24,16,8,13,19,11,15,7,12,17,10];
+  MEMS = {
+    d: [
+      { slot:'mem-dinner', ph:'Memory photo — drop an image', time:'7:48 PM · Camera', qs:[
+        { t:'Is this a picture of your dinner with family?', opts:['Yes','No','Sort of'], type:true },
+        { t:'How much did tonight matter to you?', rating:true },
+        { t:'Why do you want to keep this?', open:true },
+      ]},
+      { slot:'mem-reel', ph:'Saved reel — drop a screenshot', time:'11:02 PM · Shared reel', qs:[
+        { t:'You saved this reel about pottery classes — thinking of going?', opts:['Yes','Someday','Just liked it'], type:true },
+        { t:'What pulled you in?', open:true },
+      ]},
+    ],
+    e: [
+      { slot:'mem-museum', ph:'Memory photo — drop an image', time:'2:15 PM · Camera', qs:[
+        { t:'Who were you at the museum with?', opts:['Sam','Family','Alone'], type:true },
+        { t:'How was it, 1 to 10?', rating:true },
+        { t:'What do you want to remember about it?', open:true },
+      ]},
+      { slot:'mem-walk', ph:'Evening walk — drop a photo', time:'8:30 PM · Camera', qs:[
+        { t:'Where was this walk?', opts:['The lake','Near home','Somewhere new'], type:true },
+      ]},
+    ],
+  };
+  ARCS = [
+    { title:'18th birthday', meta:'36 memories · March', slot:'arc-bday', ph:'Cover' },
+    { title:'First internship', meta:'42 memories · May – Aug', slot:'arc-intern', ph:'Cover' },
+    { title:'Art museums', meta:'17 memories · noticed by Saga', slot:'arc-museums', ph:'Cover' },
+    { title:'Summer 2025 recruiting', meta:'63 memories · Jun – Sep', slot:'arc-recruit', ph:'Cover' },
+    { title:'Dinners with mom', meta:'21 memories · ongoing', slot:'arc-mom', ph:'Cover' },
+    { title:'Learning to cook', meta:'29 memories · noticed by Saga', slot:'arc-cook', ph:'Cover' },
+    { title:'The move to Chicago', meta:'48 memories · April', slot:'arc-chicago', ph:'Cover' },
+    { title:'Late-night drives', meta:'14 memories · noticed by Saga', slot:'arc-drives', ph:'Cover' },
+  ];
+  GROUPS = {
+    weeks: [
+      { h:'The offer', s:'May 6 – 12', tiles:[{k:'slot',slot:'arcd-offer'},{k:'txt',text:'“We\u2019d love to have you join us for the summer.”'},{k:'icon',icon:'image'}] },
+      { h:'Week one', s:'June 2 – 8', tiles:[{k:'slot',slot:'arcd-week1'},{k:'icon',icon:'image'},{k:'icon',icon:'smartphone'},{k:'icon',icon:'image'},{k:'txt',text:'“First badge photo. I look terrified.”'},{k:'icon',icon:'message-circle'}] },
+      { h:'The project that mattered', s:'July', tiles:[{k:'slot',slot:'arcd-proj'},{k:'icon',icon:'image'},{k:'icon',icon:'smartphone'},{k:'icon',icon:'image'},{k:'icon',icon:'image'},{k:'txt',text:'“They\u2019re shipping it. My thing. Shipping.”'}] },
+      { h:'Last day', s:'August 15', tiles:[{k:'slot',slot:'arcd-last'},{k:'icon',icon:'image'},{k:'icon',icon:'message-circle'}] },
+    ],
+    months: [
+      { h:'May', s:'The interviews, the yes', tiles:[{k:'slot',slot:'arcd-offer'},{k:'txt',text:'“We\u2019d love to have you join us for the summer.”'},{k:'icon',icon:'image'}] },
+      { h:'June', s:'Finding footing', tiles:[{k:'slot',slot:'arcd-week1'},{k:'icon',icon:'image'},{k:'icon',icon:'smartphone'},{k:'icon',icon:'image'},{k:'icon',icon:'message-circle'},{k:'icon',icon:'image'}] },
+      { h:'July', s:'The project', tiles:[{k:'slot',slot:'arcd-proj'},{k:'icon',icon:'image'},{k:'icon',icon:'smartphone'},{k:'icon',icon:'image'},{k:'txt',text:'“They\u2019re shipping it. My thing. Shipping.”'},{k:'icon',icon:'image'}] },
+      { h:'August', s:'Wrapping up, saying goodbye', tiles:[{k:'slot',slot:'arcd-last'},{k:'icon',icon:'image'},{k:'icon',icon:'message-circle'}] },
+    ],
+    chapters: [
+      { h:'Before', s:'The interviews and the yes · May', tiles:[{k:'slot',slot:'arcd-offer'},{k:'txt',text:'“We\u2019d love to have you join us for the summer.”'},{k:'icon',icon:'image'}] },
+      { h:'The internship', s:'June – August', tiles:[{k:'slot',slot:'arcd-week1'},{k:'slot',slot:'arcd-proj'},{k:'icon',icon:'image'},{k:'icon',icon:'smartphone'},{k:'txt',text:'“They\u2019re shipping it. My thing. Shipping.”'},{k:'icon',icon:'image'}] },
+      { h:'What it changed', s:'Where this arc points', tiles:[{k:'slot',slot:'arcd-last'},{k:'icon',icon:'message-circle'},{k:'icon',icon:'image'}] },
+    ],
+  };
+  state = {
+    draftA:'', draftB:'', kbA:false, kbB:false,
+    msgs: [
+      { who:'me', kind:'text', text:'Just got back from dinner with my parents. First time we\u2019ve all been in one place since March.' },
+      { who:'me', kind:'voice' },
+      { who:'me', kind:'text', text:'It felt different this time. Good different.' },
+      { who:'saga', kind:'opts', sel:-1, opts:['A night that mattered','Just a good dinner','Something\u2019s shifting at home','I\u2019ll type it myself'], next:['Add it to your Family arc','Start a new arc','Just remember it'] },
+    ],
+    d: { i:0, qi:0, fade:false, open:false, text:'', answers:[], dx:0, anim:false, lock:false },
+    e: { i:0, qi:3, fade:false, open:false, text:'', answers:['With Sam','9 out of 10','\u201cI felt like myself again\u201d'], dx:0, anim:false, lock:false },
+    sortOpen:true, sortVal:'By date',
+    gOpen:false, gVal:'Everything',
+    zoom:'weeks',
+  };
+  componentDidMount(){ this._icons(); this._scroll(true); }
+  componentDidUpdate(){ this._icons(); this._scroll(); }
+  _icons(){
+    if(this._ir) return;
+    this._ir = requestAnimationFrame(() => {
+      this._ir = null;
+      if(window.lucide){ try{ window.lucide.createIcons({ attrs:{ 'stroke-width':1.75, width:'100%', height:'100%' } }); }catch(e){} }
+      else setTimeout(() => this._icons(), 300);
+    });
+  }
+  _scroll(force){
+    const n = this.state.msgs.length;
+    if(force || n !== this._pl){ this._pl = n; const el = this.threadRef.current; if(el) el.scrollTop = el.scrollHeight; }
+  }
+  setEng(k, patch){ this.setState(s => ({ [k]: { ...s[k], ...patch } })); }
+  isAns(k){ const st = this.state[k]; return st.qi >= this.MEMS[k][st.i].qs.length; }
+  answer(k, val){
+    if(this.state[k].fade) return;
+    this.setEng(k, { fade:true, answers:[...this.state[k].answers, val] });
+    setTimeout(() => this.setEng(k, { qi:this.state[k].qi + 1, fade:false, open:false, text:'' }), 230);
+  }
+  submitOpen(k){ const t = this.state[k].text.trim(); if(!t) return; this.answer(k, '\u201c' + t + '\u201d'); }
+  pd(k, e){ this._drag = { k, x0:e.clientX, pid:e.pointerId, el:e.currentTarget, cap:false }; this.setEng(k, { anim:false }); }
+  pm(k, e){
+    const d = this._drag; if(!d || d.k !== k) return;
+    const raw = e.clientX - d.x0;
+    if(!d.cap && Math.abs(raw) > 6){ try{ d.el.setPointerCapture(d.pid); }catch(err){} d.cap = true; }
+    if(!d.cap) return;
+    let dx, lock = false;
+    if(raw > 0 && !this.isAns(k)){ dx = Math.min(raw / 4, 36); lock = raw > 40; } else dx = raw;
+    this.setEng(k, { dx, lock });
+  }
+  pu(k, e){
+    const d = this._drag; if(!d || d.k !== k) return;
+    this._drag = null;
+    const st = this.state[k];
+    if(st.dx < -110) this.fly(k, -1);
+    else if(this.isAns(k) && st.dx > 110) this.fly(k, 1);
+    else this.setEng(k, { dx:0, anim:true, lock:false });
+  }
+  fly(k, dir){
+    this.setEng(k, { dx:dir * 580, anim:true, lock:false });
+    setTimeout(() => {
+      const st = this.state[k];
+      const ni = (st.i + 1) % this.MEMS[k].length;
+      this.setState({ [k]: { i:ni, qi:0, fade:false, open:false, text:'', answers:[], dx:0, anim:false, lock:false } });
+    }, 340);
+  }
+  sendDraft(dk){
+    const t = this.state[dk].trim(); if(!t) return;
+    this.setState(s => ({ [dk]:'', msgs:[...s.msgs, { who:'me', kind:'text', text:t }] }));
+    setTimeout(() => this.setState(s => ({ msgs:[...s.msgs, { who:'saga', kind:'opts', sel:-1, opts:['Keep this','Let it go','Add it to an arc','Ask me more'] }] })), 700);
+  }
+  pickOpt(mi, oi){
+    const msgs = this.state.msgs.slice();
+    const m = msgs[mi]; if(!m || m.sel >= 0) return;
+    msgs[mi] = { ...m, sel:oi };
+    msgs.push({ who:'me', kind:'text', text:m.opts[oi] });
+    this.setState({ msgs });
+    if(m.next) setTimeout(() => this.setState(s => ({ msgs:[...s.msgs, { who:'saga', kind:'opts', sel:-1, opts:m.next }] })), 700);
+  }
+  eng(k){
+    const st = this.state[k], stack = this.MEMS[k], mem = stack[st.i];
+    const total = this.props.memoriesToday ?? 8;
+    const answered = st.qi >= mem.qs.length;
+    const q = mem.qs[Math.min(st.qi, mem.qs.length - 1)];
+    const showOpen = !answered && (!!q.open || st.open);
+    const showOpts = !answered && !showOpen;
+    let opts = [], cols = '1fr 1fr';
+    if(showOpts){
+      if(q.rating){
+        cols = 'repeat(5,1fr)';
+        for(let n = 1; n <= 10; n++){ const v = n; opts.push({ label:String(n), bg:'var(--surface-sunken)', bd:'transparent', color:'var(--ink-900)', onTap:() => this.answer(k, v + ' out of 10') }); }
+      } else {
+        opts = q.opts.map(l => ({ label:l, bg:'var(--surface-sunken)', bd:'transparent', color:'var(--ink-900)', onTap:() => this.answer(k, l) }));
+        if(q.type) opts.push({ label:'Type yourself', bg:'var(--surface)', bd:'var(--line-strong)', color:'var(--ink-700)', onTap:() => this.setEng(k, { open:true }) });
+      }
+    }
+    const glowColor = (this.props.saveGlow ?? 'green whisper') === 'ink' ? 'rgba(28,28,30,.22)' : 'rgba(52,121,90,.34)';
+    const base = k === 'd' ? 3 : 7;
+    return {
+      slot:mem.slot, ph:mem.ph, time:mem.time,
+      qMeta:'Question ' + Math.min(st.qi + 1, mem.qs.length) + ' of ' + mem.qs.length,
+      qText:q.t, opts, cols, showOpts, showOpen, answered, notAnswered:!answered, lock:st.lock,
+      openVal:st.text,
+      onOpenChange:(e) => this.setEng(k, { text:e.target.value }),
+      onOpenKey:(e) => { if(e.key === 'Enter'){ e.preventDefault(); this.submitOpen(k); } },
+      onOpenSubmit:() => this.submitOpen(k),
+      answers:st.answers,
+      tf:'translateX(' + st.dx + 'px) rotate(' + (st.dx * 0.05).toFixed(2) + 'deg)',
+      tr:st.anim ? 'transform 320ms var(--ease-standard)' : 'none',
+      qOp:st.fade ? 0 : 1,
+      qTf:st.fade ? 'translateY(10px)' : 'translateY(0)',
+      glow:'linear-gradient(to left, ' + glowColor + ', transparent)',
+      progress:Math.min(base + st.i, total) + ' of ' + total,
+      hint:answered ? 'Swipe right to save \u2014 or left to let it go' : 'Swipe left to let it go',
+      onDown:(e) => this.pd(k, e), onMove:(e) => this.pm(k, e), onUp:(e) => this.pu(k, e),
+    };
+  }
+  renderVals(){
+    const total = this.props.memoriesToday ?? 8;
+    const msgs = this.state.msgs.map((m, mi) => {
+      const me = m.who === 'me';
+      return {
+        isText:m.kind === 'text', isVoice:m.kind === 'voice', isOpts:m.kind === 'opts', text:m.text,
+        align:me ? 'flex-end' : 'flex-start',
+        bg:me ? 'var(--ink-900)' : 'var(--surface)',
+        color:me ? '#fff' : 'var(--ink-900)',
+        radius:me ? '20px 20px 6px 20px' : '20px 20px 20px 6px',
+        border:me ? 'none' : '1px solid var(--line)',
+        shadow:me ? 'none' : 'var(--shadow-sm)',
+        opts:(m.opts || []).map((label, oi) => ({
+          label,
+          bg:m.sel === oi ? 'var(--ink-900)' : 'var(--surface-sunken)',
+          color:m.sel === oi ? '#fff' : 'var(--ink-900)',
+          onTap:() => this.pickOpt(mi, oi),
+        })),
+      };
+    });
+    const sortOpts = ['By date','Alphabetical','By keyword'].map(l => ({
+      label:l, on:this.state.sortVal === l,
+      bg:this.state.sortVal === l ? 'var(--surface-sunken)' : 'transparent',
+      onTap:() => this.setState({ sortVal:l, sortOpen:false }),
+    }));
+    const gOpts = ['Everything','Photos','Screenshots','Texts','Date range\u2026'].map(l => ({
+      label:l, on:this.state.gVal === l,
+      bg:this.state.gVal === l ? 'var(--surface-sunken)' : 'transparent',
+      onTap:() => this.setState({ gVal:l, gOpen:false }),
+    }));
+    const gGroups = this.GROUPS[this.state.zoom].map(g => ({
+      h:g.h, s:g.s,
+      tiles:g.tiles.map(t => ({ isSlot:t.k === 'slot', isTxt:t.k === 'txt', isIcon:t.k === 'icon', slot:t.slot, text:t.text, icon:t.icon })),
+    }));
+    return {
+      kbA:this.state.kbA, notKbA:!this.state.kbA,
+      kbB:this.state.kbB, notKbB:!this.state.kbB,
+      setKbA:() => this.setState({ kbA:true }),
+      voiceA:() => this.setState({ kbA:false }),
+      setKbB:() => this.setState({ kbB:true }),
+      voiceB:() => this.setState({ kbB:false }),
+      msgs, voiceBars:this.BARS, threadRef:this.threadRef,
+      draftA:this.state.draftA, draftB:this.state.draftB,
+      onDraftA:(e) => this.setState({ draftA:e.target.value }),
+      onDraftB:(e) => this.setState({ draftB:e.target.value }),
+      onKeyA:(e) => { if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); this.sendDraft('draftA'); } },
+      onKeyB:(e) => { if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); this.sendDraft('draftB'); } },
+      sendA:() => this.sendDraft('draftA'),
+      sendB:() => this.sendDraft('draftB'),
+      noop:() => {},
+      notifBody:'Review the ' + total + ' memories you made today.',
+      dv:this.eng('d'), ev:this.eng('e'),
+      arcs:this.ARCS,
+      sortOpen:this.state.sortOpen, sortOpts,
+      toggleSort:() => this.setState(s => ({ sortOpen:!s.sortOpen })),
+      gOpen:this.state.gOpen, gOpts,
+      toggleGFilter:() => this.setState(s => ({ gOpen:!s.gOpen })),
+      zoom:this.state.zoom, gGroups,
+      zoomOpts:[{ value:'weeks', label:'Weeks' },{ value:'months', label:'Months' },{ value:'chapters', label:'Chapters' }],
+      setZoom:(v) => this.setState({ zoom:v }),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+// Copy to Runtime.local.xcconfig and replace the examples with the deployed public values.
+// `$()` preserves the second slash because xcconfig otherwise treats `//` as a comment.
+KYO_API_BASE_URL = https:/$()/co.example
+KYO_SUPABASE_URL = https:/$()/project.supabase.co
+KYO_SUPABASE_PUBLISHABLE_KEY = sb_publishable_replace_me

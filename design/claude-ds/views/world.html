@@ -1,0 +1,139 @@
+<!-- @dsCard group="Views" -->
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>co · the world</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --paper:#f3efe7; --ink:#221d13; --dim:#8d8474;
+  --glass:rgba(255,255,252,.55); --edge:rgba(255,255,255,.7);
+  --accent:#e0581f; --go:#3d7a55; --display:"Fraunces",Georgia,serif;
+  --ui:"Schibsted Grotesk",-apple-system,system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font:400 15px/1.5 var(--ui);color:var(--ink);background:var(--paper);
+  padding:20px 18px calc(120px + env(safe-area-inset-bottom));overflow-x:hidden}
+/* the liquid field the glass refracts */
+.field{position:fixed;inset:-20%;z-index:-1;filter:blur(70px);opacity:.55;pointer-events:none}
+.field i{position:absolute;border-radius:50%}
+.field i:nth-child(1){width:44vw;height:44vw;left:-6%;top:-4%;background:#f6c69a;animation:drift1 46s ease-in-out infinite alternate}
+.field i:nth-child(2){width:38vw;height:38vw;right:-4%;top:22%;background:#bcd4e6;animation:drift2 58s ease-in-out infinite alternate}
+.field i:nth-child(3){width:30vw;height:30vw;left:30%;bottom:-8%;background:#e8d9b8;animation:drift1 64s ease-in-out infinite alternate-reverse}
+@keyframes drift1{to{transform:translate(9vw,6vh) scale(1.12)}}
+@keyframes drift2{to{transform:translate(-7vw,8vh) scale(.92)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.wrap{max-width:620px;margin:0 auto}
+/* the statement */
+.statement{font-family:var(--display);font-size:clamp(26px,5.5vw,34px);font-weight:500;
+  line-height:1.3;text-align:center;letter-spacing:-.015em;margin:26px auto 6px;max-width:520px}
+.statement mark{background:color-mix(in srgb,var(--accent) 30%,transparent);color:inherit;border-radius:6px;padding:1px 8px}
+.date{text-align:center;font-size:12.5px;color:var(--dim);margin-bottom:26px}
+/* glass panels */
+.glass{background:var(--glass);-webkit-backdrop-filter:blur(28px) saturate(150%);backdrop-filter:blur(28px) saturate(150%);
+  border-radius:24px;border:1px solid var(--edge);border-bottom-color:rgba(255,255,255,.35);
+  box-shadow:0 20px 50px rgba(80,60,20,.10), inset 0 1px 0 rgba(255,255,255,.8);
+  padding:18px 18px 14px;margin:0 0 18px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);
+  display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.eyebrow b{font-weight:700;color:var(--accent)}
+.row{display:flex;align-items:center;gap:12px;padding:11px 2px;border-top:1px solid rgba(50,40,20,.08)}
+.row:first-of-type{border-top:0}
+.rt{flex:1;font-size:15px;font-weight:600;letter-spacing:-.01em;line-height:1.35}
+.rs{font-size:12.5px;color:var(--dim);margin-top:1px;font-weight:400}
+.act{flex:none;display:flex;gap:6px}
+.chip{font-size:12px;font-weight:600;border:0;border-radius:99px;padding:7px 13px;cursor:pointer;
+  background:rgba(34,29,19,.06);color:var(--ink);transition:all .15s}
+.chip.go{background:var(--ink);color:#fff}
+.chip:hover{transform:translateY(-1px)}
+.dot{width:7px;height:7px;border-radius:99px;flex:none}
+.dot.g{background:var(--go);animation:pulse 1.8s ease-in-out infinite}
+.dot.a{background:var(--accent)}
+@keyframes pulse{50%{opacity:.35}}
+.more{font-size:12.5px;font-weight:600;color:var(--dim);background:none;border:0;padding:10px 2px 2px;cursor:pointer}
+.quiet{font-size:13.5px;color:var(--dim);padding:6px 2px}
+/* today ribbon */
+.ribbon{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding:2px 2px 6px;margin:0 0 18px}
+.ribbon::-webkit-scrollbar{display:none}
+.ev{flex:none;background:var(--glass);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
+  border:1px solid var(--edge);border-radius:16px;padding:10px 14px;box-shadow:0 8px 24px rgba(80,60,20,.08)}
+.ev b{display:block;font-size:13.5px;font-weight:600}
+.ev span{font-size:11.5px;color:var(--dim)}
+.ev.held{outline:1.5px solid color-mix(in srgb,var(--accent) 55%,transparent)}
+/* reading distilled */
+.readline{font-family:var(--display);font-style:italic;font-size:17.5px;line-height:1.5;letter-spacing:-.005em}
+.receipt{font-size:12px;color:var(--dim);margin-top:6px}
+/* shelf */
+.shelf{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 8px}
+.shelf::-webkit-scrollbar{display:none}
+.cov{flex:none;width:120px}
+.cov i{display:block;aspect-ratio:1;border-radius:16px;background:linear-gradient(135deg,#d8c9a8,#b9a988);
+  box-shadow:0 8px 24px rgba(80,60,20,.12)}
+.cov b{display:block;font-size:12.5px;font-weight:600;margin-top:7px}
+.cov span{font-size:11px;color:var(--dim)}
+/* the dock — liquid glass, one command */
+.dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom));
+  width:min(560px,92vw);display:flex;align-items:center;gap:8px;z-index:10;
+  background:rgba(255,255,252,.62);-webkit-backdrop-filter:blur(32px) saturate(160%);backdrop-filter:blur(32px) saturate(160%);
+  border:1px solid var(--edge);border-radius:99px;padding:8px 8px 8px 18px;
+  box-shadow:0 24px 60px rgba(60,42,12,.18), inset 0 1px 0 rgba(255,255,255,.9)}
+.dock input{flex:1;background:none;border:0;outline:none;font:500 15px var(--ui);color:var(--ink)}
+.dock input::placeholder{color:var(--dim)}
+.dock .jump{display:flex;gap:2px}
+.dock .jump a{width:34px;height:34px;border-radius:99px;display:grid;place-items:center;color:var(--dim);
+  text-decoration:none;font-size:15px;transition:all .15s}
+.dock .jump a:hover{background:rgba(34,29,19,.07);color:var(--ink)}
+.send{width:38px;height:38px;border-radius:99px;border:0;background:var(--ink);color:#fff;font-size:16px;cursor:pointer}
+</style></head><body>
+<div class="field"><i></i><i></i><i></i></div>
+<div class="wrap">
+
+<div class="statement">live the life you <mark>want</mark></div>
+<div class="date">monday, august 24</div>
+
+<div class="ribbon">
+  <div class="ev held"><b>founder sync</b><span>today 5:00 · held by co</span></div>
+  <div class="ev"><b>morning run club</b><span>tue 7:30</span></div>
+  <div class="ev"><b>studio visit</b><span>tue 10:30</span></div>
+  <div class="ev"><b>demo presentations</b><span>wed 11:00</span></div>
+</div>
+
+<section class="glass" id="decide">
+  <div class="eyebrow"><b>●</b> needs you <span style="margin-left:auto;font-weight:500">3</span></div>
+  <div class="row"><span class="dot a"></span><div style="flex:1"><div class="rt">notes app subscription renews friday, $84</div><div class="rs">caught in your inbox · yearly</div></div>
+    <div class="act"><button class="chip go">keep</button><button class="chip">cancel it</button></div></div>
+  <div class="row"><span class="dot a"></span><div style="flex:1"><div class="rt">api token expires in 3 days</div><div class="rs">things break quietly when it does</div></div>
+    <div class="act"><button class="chip go">remind me</button></div></div>
+  <div class="row"><span class="dot a"></span><div style="flex:1"><div class="rt">thursday 8pm still open for the first stream?</div><div class="rs">you said this week</div></div>
+    <div class="act"><button class="chip go">hold it</button><button class="chip">not yet</button></div></div>
+</section>
+
+<section class="glass" id="doing">
+  <div class="eyebrow">on your behalf</div>
+  <div class="row"><span class="dot g"></span><div style="flex:1"><div class="rt">watching gpu prices for the build</div><div class="rs">standing · no move yet</div></div></div>
+  <div class="row"><span class="dot g"></span><div style="flex:1"><div class="rt">researching lease comparables</div><div class="rs">report lands tomorrow</div></div></div>
+  <div class="row"><div style="flex:1"><div class="rt">watched the 92-minute interview you sent</div><div class="rs">ask me anything from it</div></div></div>
+  <button class="more">6 more receipts</button>
+</section>
+
+<section class="glass" id="you">
+  <div class="eyebrow">the record shows</div>
+  <div class="readline">you keep collecting the tools of the life you want, then filing them instead of using them.</div>
+  <div class="receipt">from your own words · 3 receipts · tap to see them</div>
+</section>
+
+<div class="eyebrow" style="padding:6px 4px">kept this week</div>
+<div class="shelf">
+  <div class="cov"><i></i><b>the craft</b><span>7 things</span></div>
+  <div class="cov"><i style="background:linear-gradient(135deg,#b9c9b2,#8fa989)"></i><b>first streams</b><span>4 things</span></div>
+  <div class="cov"><i style="background:linear-gradient(135deg,#c9b2b2,#a98989)"></i><b>people to call</b><span>3 things</span></div>
+  <div class="cov"><i style="background:linear-gradient(135deg,#b2bcc9,#8996a9)"></i><b>the move</b><span>5 things</span></div>
+</div>
+
+</div>
+<div class="dock">
+  <input placeholder="ask, add, or find anything…">
+  <div class="jump"><a href="#decide" title="needs you">●</a><a href="#doing" title="on your behalf">◐</a><a href="#you" title="the record">○</a></div>
+  <button class="send">↑</button>
+</div>
+</body></html>

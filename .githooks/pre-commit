@@ -1,0 +1,20 @@
+#!/bin/bash
+# Phone-number guard (founder TODAY list, 8/9): the personal-number purge (8/3 history
+# rewrite) got undone by a test fixture within a week. Block any staged ADDITION of a
+# phone-shaped number outside the reserved fixture ranges (555 / 999 / the documented
+# business line). Bypass knowingly: git commit --no-verify.
+# Require token boundaries so hashes, decimal constants, IDs, and URL path segments do
+# not masquerade as phone numbers. A real bare or E.164 number still trips the guard.
+HITS=$(git diff --cached -U0 | perl -ne '
+  next unless /^\+(?!\+\+)/;
+  while (/(?<![A-Za-z0-9_.\/-])(\+?1?[0-9]{10}|\+[0-9]{11,15})(?![A-Za-z0-9_.-])/g) {
+    print "$1\n";
+  }
+' | grep -vE '1?555[0-9]{7}|1?[0-9]{3}555[0-9]{4}|9998887777|3323178511' | sort -u)
+if [ -n "$HITS" ]; then
+  echo "pre-commit: phone-shaped numbers staged (personal numbers never enter this repo):" >&2
+  echo "$HITS" | sed 's/^/    /' >&2
+  echo "use a 555 fixture number, or --no-verify if this is genuinely not a phone." >&2
+  exit 1
+fi
+exit 0

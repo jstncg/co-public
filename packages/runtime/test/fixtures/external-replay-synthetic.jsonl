@@ -1,0 +1,8 @@
+{"idx":0,"role":"user","content":"In January I noticed that a garden improves when observations are dated.","exchange_id":"january","timestamp":"2026-01-10T12:00:00.000Z"}
+{"idx":1,"role":"assistant","content":"Dates make changes easier to distinguish from impressions.","exchange_id":"january","timestamp":"2026-01-10T12:01:00.000Z"}
+{"idx":2,"role":"user","content":"In February I found the same thing while debugging a weather station.","exchange_id":"february","timestamp":"2026-02-10T12:00:00.000Z"}
+{"idx":3,"role":"assistant","content":"The timestamped measurements made the failure pattern visible.","exchange_id":"february","timestamp":"2026-02-10T12:01:00.000Z"}
+{"idx":4,"role":"user","content":"In March a dated notebook made my cooking experiments easier to compare too.","exchange_id":"march","timestamp":"2026-03-10T12:00:00.000Z"}
+{"idx":5,"role":"assistant","content":"That gives you another domain where temporal evidence improved judgment.","exchange_id":"march","timestamp":"2026-03-10T12:01:00.000Z"}
+{"idx":6,"role":"user","content":"What precise connection is present across those examples?","exchange_id":"checkpoint","timestamp":"2026-04-10T12:00:00.000Z"}
+{"idx":7,"role":"assistant","content":"They all use dated observations to turn change into comparable evidence.","exchange_id":"checkpoint","timestamp":"2026-04-10T12:01:00.000Z"}

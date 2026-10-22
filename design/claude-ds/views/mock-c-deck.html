@@ -1,0 +1,62 @@
+<!-- @dsCard group="Mockups" -->
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>C · the command deck</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{--bg:#131518;--panel:#1b1e23;--ink:#e8e6e1;--dim:#7c8087;--line:#282c33;--go:#4ade80;--warn:#f59e0b;--accent:#ff6b35}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font:400 13.5px/1.5 "Inter",sans-serif;color:var(--ink);background:var(--bg);padding:20px}
+.grid{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.head{grid-column:1/-1;display:flex;align-items:center;gap:14px;padding:4px 2px 10px}
+.head h1{font-size:15px;font-weight:600}
+.head .mono{font:500 11.5px "JetBrains Mono",monospace;color:var(--dim);margin-left:auto}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.ph{display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.ph .n{margin-left:auto;font:500 11px "JetBrains Mono",monospace}
+.ph .n.hot{color:var(--accent)}
+.row{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0}
+.st{font:500 10px "JetBrains Mono",monospace;flex:none;border-radius:5px;padding:3px 7px}
+.st.need{background:#3a2418;color:var(--accent)}
+.st.live{background:#16301f;color:var(--go)}
+.st.done{background:#1e2733;color:#7ab5f5}
+.t{flex:1;font-weight:500;min-width:0}
+.s{font-size:11.5px;color:var(--dim)}
+.b{font-size:11.5px;font-weight:600;background:var(--ink);color:var(--bg);border:0;border-radius:7px;padding:6px 11px;cursor:pointer}
+.b.q{background:#262a31;color:var(--ink)}
+.readp{grid-column:1/-1}
+.read{font-size:15px;line-height:1.6;color:#cdc9c0;font-style:italic}
+.cmd{grid-column:1/-1;display:flex;gap:10px;background:var(--panel);border:1px solid var(--line);
+  border-radius:12px;padding:10px 10px 10px 16px;align-items:center}
+.cmd .mono{font:500 12px "JetBrains Mono",monospace;color:var(--accent)}
+.cmd input{flex:1;background:none;border:0;outline:none;color:var(--ink);font:400 14px "Inter",sans-serif}
+.cmd input::placeholder{color:var(--dim)}
+</style></head><body>
+<div class="grid">
+  <div class="head"><h1>co</h1><span class="mono">mon aug 24 · 3 need you · 4 running</span></div>
+
+  <div class="panel">
+    <div class="ph">queue — needs you <span class="n hot">3</span></div>
+    <div class="row"><span class="st need">RENEW</span><div class="t">notes subscription, friday, $84<div class="s">caught in inbox · yearly</div></div><button class="b">keep</button><button class="b q">cancel</button></div>
+    <div class="row"><span class="st need">EXPIRY</span><div class="t">api token, 3 days<div class="s">breaks quietly when it lapses</div></div><button class="b">remind</button></div>
+    <div class="row"><span class="st need">WINDOW</span><div class="t">thursday 8pm, first stream<div class="s">you said this week</div></div><button class="b">hold it</button><button class="b q">not yet</button></div>
+  </div>
+
+  <div class="panel">
+    <div class="ph">running — on your behalf <span class="n">4</span></div>
+    <div class="row"><span class="st live">WATCH</span><div class="t">gpu prices for the build<div class="s">standing · no move yet</div></div></div>
+    <div class="row"><span class="st live">RSRCH</span><div class="t">lease comparables<div class="s">report lands tomorrow</div></div></div>
+    <div class="row"><span class="st done">DONE</span><div class="t">watched the 92-min interview<div class="s">ask anything from it</div></div></div>
+    <div class="row"><span class="st done">HELD</span><div class="t">thursday 8pm on your calendar<div class="s">delete to undo</div></div></div>
+  </div>
+
+  <div class="panel readp">
+    <div class="ph">the record shows</div>
+    <div class="read">"you keep collecting the tools of the life you want, then filing them instead of using them."</div>
+    <div class="s" style="margin-top:6px">your own words · 3 receipts · open the reading</div>
+  </div>
+
+  <div class="cmd"><span class="mono">›</span><input placeholder="handle anything — it lands in the queue with receipts"><button class="b">run</button></div>
+</div>
+</body></html>

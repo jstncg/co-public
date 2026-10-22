@@ -1,0 +1,53 @@
+project_id = "co-local"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 17
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+[studio]
+enabled = true
+port = 54323
+
+[auth]
+enabled = true
+site_url = "http://127.0.0.1:3000"
+additional_redirect_urls = ["co://auth/callback", "http://127.0.0.1:3000/auth/callback"]
+jwt_expiry = 3600
+enable_signup = true
+enable_anonymous_sign_ins = true
+
+[auth.external.apple]
+enabled = false
+client_id = "env(SUPABASE_AUTH_EXTERNAL_APPLE_CLIENT_ID)"
+secret = "env(SUPABASE_AUTH_EXTERNAL_APPLE_SECRET)"
+
+[storage]
+enabled = true
+file_size_limit = "50MiB"
+
+[storage.buckets.artifacts]
+public = false
+file_size_limit = "50MiB"
+allowed_mime_types = ["image/jpeg", "image/png", "image/heic", "audio/m4a", "audio/mp4", "video/mp4", "text/plain", "application/pdf"]
+
+[storage.buckets.exports]
+public = false
+file_size_limit = "100MiB"
+allowed_mime_types = ["application/zip", "application/json"]
+
+# co-api validates the member JWT itself so its unauthenticated health route remains usable and
+# authentication failures have one consistent response shape for the native app
+[functions.co-api]
+verify_jwt = false
